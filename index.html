@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="TableTop Baseball Helper">
+  <meta name="author" content="Richard Beyer">
+  <title>TableTop Baseball Helper | Welcome</title>
+  <link rel="stylesheet" href="./css/main.css">
+
+  <script>
+    function getSelectedText(elementId) {
+      var elt = document.getElementById(elementId);
+
+      if (elt.selectedIndex == -1)
+        return null;
+
+      return elt.options[elt.selectedIndex].text;
+    }
+
+    function loadGames(reloadDay) {
+      /* first load dates into day select dropdown */
+      /* get file to parse */
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var myObj = JSON.parse(this.responseText);
+
+          /* get dates and populate drop-down box */
+          if (reloadDay) {
+            populateDay(myObj);
+          }
+
+          //document.getElementById("demo").innerHTML = "it works";
+
+          getGames(myObj);
+        }
+      };
+
+      var gamefile = getGameFile(document.getElementById('year').value);
+
+      xmlhttp.open("GET", gamefile, true);
+      xmlhttp.send();
+    }
+
+    function getGameFile(year) {
+
+      switch (parseInt(year)) {
+        case 2018:
+          return "https://gist.githubusercontent.com/rick99gtp/719250fc21468691765c6ad07eeda69c/raw/d4db77ffe4d0f4de5a9598b9f9362aecfc44af9c/gl2018.txt";
+        case 2017:
+          return "https://gist.githubusercontent.com/rick99gtp/e8d8f3e3e7b87bbde2e348eee1688d7c/raw/3bc60c9cf487fb4d073dcac6a4c2f2471897f14e/gl2017.txt";
+      }
+    }
+
+    function getGames(obj) {
+      // look through obj and start pulling information
+      let thisDayValue = document.getElementById("day").value;
+      let startDaySet = false;
+      let startDay = 0;
+      let endDay = 0;
+
+      //get the first record and the last record for this day
+      for (var i = 0; i < obj.gameday.length; i++) {
+        if (obj.gameday[i].date === thisDayValue) {
+          // found the correct Day, put in var
+          if (startDaySet === false) {
+            startDaySet = true;
+            startDay = i;
+          }
+
+          endDay = i;
+        }
+      }
+
+      // list games
+      //for (var gameLoop = startDay; gameLoop < endDay; gameLoop++) {
+      var addThisHtmlToAL = "";
+      var addThisHtmlToNL = "";
+
+      for (var gameLoop = startDay; gameLoop < endDay; gameLoop++) {
+        // array to track runs per innings
+        var vRunsPerInning = 0;
+        var hRunsPerInning = 0;
+
+        // get Team Names
+        var visTeam = getTeamName(obj.gameday[gameLoop].visteam);
+        var homeTeam = getTeamName(obj.gameday[gameLoop].hometeam);
+
+        // get line scores
+        var visLineScore = obj.gameday[gameLoop].vislinescore;
+        var homeLineScore = obj.gameday[gameLoop].homelinescore;
+
+        var vHits = obj.gameday[gameLoop].vish;
+        var hHits = obj.gameday[gameLoop].homeh;
+
+        var vErrors = obj.gameday[gameLoop].vise;
+        var hErrors = obj.gameday[gameLoop].homee;
+
+        var winningPitcherName = obj.gameday[gameLoop].winningpitchername;
+        var losingPitcherName = obj.gameday[gameLoop].losingpitchername;
+        var savingPitcherName = obj.gameday[gameLoop].savingpitchername;
+
+        var vLine = ["", "", "", "", "", "", "", "", "", ""," "," "," "];
+        var vCount = 0;
+
+        var hLine = ["", "", "", "", "", "", "", "", "", ""," "," "," "];
+        var hCount = 0;
+
+        var vBatter = ["", "", "", "", "", "", "", "", ""];
+        var hBatter = ["", "", "", "", "", "", "", "", ""];
+
+        var vPos = ["", "", "", "", "", "", "", "", ""];
+        var hPos = ["", "", "", "", "", "", "", "", ""];
+
+        var vPitcher = "";
+        var hPitcher = "";
+
+        var visScore = 0;
+        var homeScore = 0;
+
+        // create visitor linescore array
+        for (var i = 0; i < 13; i++) {
+          // if next character in linescore is a '(' then a team has scored more than one digit of runs
+          // need to get two characters
+          if (visLineScore.substr(vCount, 1) !== "(") {
+            // get one character
+            vLine[i] = visLineScore.substr(vCount, 1);
+            vCount += vLine[i].length;
+          } else {
+            // get two characters
+            vLine[i] = visLineScore.substr(vCount + 1, 2);
+            vCount += 4;
+          }
+
+          if(i < 9) {
+            vRunsPerInning += parseInt(vLine[i]) || 0;
+          }
+
+        }
+
+        // create home linescore array
+        for (var i = 0; i < 13; i++) {
+          // if next character in linescore is a '(' then a team has scored more than one digit of runs
+          // need to get two characters
+          if (homeLineScore.substr(hCount, 1) !== "(") {
+            // get one character
+            hLine[i] = homeLineScore.substr(hCount, 1);
+            hCount += hLine[i].length;
+          } else {
+            // get two characters
+            hLine[i] = homeLineScore.substr(hCount + 1, 2);
+            hCount += 4;
+          }
+
+          if(i < 9) {
+            hRunsPerInning += parseInt(hLine[i]) || 0;
+          }
+        }
+
+        // visitor scored
+        vScore = obj.gameday[gameLoop].visscore;
+        hScore = obj.gameday[gameLoop].homescore;
+
+        // get vBatters
+        vBatter[0] = obj.gameday[gameLoop].visplayername1;
+        vBatter[1] = obj.gameday[gameLoop].visplayername2;
+        vBatter[2] = obj.gameday[gameLoop].visplayername3;
+        vBatter[3] = obj.gameday[gameLoop].visplayername4;
+        vBatter[4] = obj.gameday[gameLoop].visplayername5;
+        vBatter[5] = obj.gameday[gameLoop].visplayername6;
+        vBatter[6] = obj.gameday[gameLoop].visplayername7;
+        vBatter[7] = obj.gameday[gameLoop].visplayername8;
+        vBatter[8] = obj.gameday[gameLoop].visplayername9;
+
+        vPos[0] = getPos(obj.gameday[gameLoop].visplayerposition1);
+        vPos[1] = getPos(obj.gameday[gameLoop].visplayerposition2);
+        vPos[2] = getPos(obj.gameday[gameLoop].visplayerposition3);
+        vPos[3] = getPos(obj.gameday[gameLoop].visplayerposition4);
+        vPos[4] = getPos(obj.gameday[gameLoop].visplayerposition5);
+        vPos[5] = getPos(obj.gameday[gameLoop].visplayerposition6);
+        vPos[6] = getPos(obj.gameday[gameLoop].visplayerposition7);
+        vPos[7] = getPos(obj.gameday[gameLoop].visplayerposition8);
+        vPos[8] = getPos(obj.gameday[gameLoop].visplayerposition9);
+
+        vPitcher = obj.gameday[gameLoop].vispitchername;
+
+        hBatter[0] = obj.gameday[gameLoop].homeplayername1;
+        hBatter[1] = obj.gameday[gameLoop].homeplayername2;
+        hBatter[2] = obj.gameday[gameLoop].homeplayername3;
+        hBatter[3] = obj.gameday[gameLoop].homeplayername4;
+        hBatter[4] = obj.gameday[gameLoop].homeplayername5;
+        hBatter[5] = obj.gameday[gameLoop].homeplayername6;
+        hBatter[6] = obj.gameday[gameLoop].homeplayername7;
+        hBatter[7] = obj.gameday[gameLoop].homeplayername8;
+        hBatter[8] = obj.gameday[gameLoop].homeplayername9;
+
+        hPos[0] = getPos(obj.gameday[gameLoop].homeplayerposition1);
+        hPos[1] = getPos(obj.gameday[gameLoop].homeplayerposition2);
+        hPos[2] = getPos(obj.gameday[gameLoop].homeplayerposition3);
+        hPos[3] = getPos(obj.gameday[gameLoop].homeplayerposition4);
+        hPos[4] = getPos(obj.gameday[gameLoop].homeplayerposition5);
+        hPos[5] = getPos(obj.gameday[gameLoop].homeplayerposition6);
+        hPos[6] = getPos(obj.gameday[gameLoop].homeplayerposition7);
+        hPos[7] = getPos(obj.gameday[gameLoop].homeplayerposition8);
+        hPos[8] = getPos(obj.gameday[gameLoop].homeplayerposition9);
+
+        hPitcher = obj.gameday[gameLoop].homepitchername;
+
+        // get extra inning runs, if any
+        var vExtraInningRuns = obj.gameday[gameLoop].visscore - vRunsPerInning;
+
+        var hExtraInningRuns = obj.gameday[gameLoop].homescore - hRunsPerInning;
+
+        // Show Box Score
+        if (obj.gameday[gameLoop].homeleague === "AL") {
+          addThisHtmlToAL +=
+            "<div class='game'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames'>" + visTeam +
+            "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
+              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + obj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[1] +
+            "</div><div>" + hLine[2] +
+            "</div><div>" + hLine[3] + "</div><div>" + hLine[4] +
+            "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" + obj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" +
+            hErrors + "</div></div><div>Winning Pitcher: " + winningPitcherName + "</div><div>Losing Pitcher: " + losingPitcherName + "</div><div>Save: " + savingPitcherName +
+            "</div><div class='linkToSpreadsheet'><a href='scoresheet.html?vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
+            "&vBatter7=" + vBatter[6] + "&vBatter8=" + vBatter[7] + "&vBatter9=" + vBatter[8] + "&hBatter1=" + hBatter[0] + "&hBatter2=" + hBatter[1] + "&hBatter3=" + hBatter[2] + "&hBatter4=" + hBatter[3] + "&hBatter5=" + hBatter[4] + "&hBatter6=" +
+            hBatter[5] + "&hBatter7=" + hBatter[6] + "&hBatter8=" + hBatter[7] + "&hBatter9=" + hBatter[8] + "&vPitcher=" + vPitcher + "&hPitcher=" + hPitcher + "&vPos1=" + vPos[0] + "&vPos2=" + vPos[1] + "&vPos3=" + vPos[2] + "&vPos4=" + vPos[3] +
+            "&vPos5=" + vPos[4] + "&vPos6=" + vPos[5] + "&vPos7=" + vPos[6] + "&vPos8=" + vPos[7] + "&vPos9=" + vPos[8] + "&hPos1=" + hPos[0] + "&hPos2=" + hPos[1] + "&hPos3=" + hPos[2] + "&hPos4=" + hPos[3] +
+            "&hPos5=" + hPos[4] + "&hPos6=" + hPos[5] + "&hPos7=" + hPos[6] + "&hPos8=" + hPos[7] + "&hPos9=" + hPos[8] + "&visTeam=" + visTeam + "&homeTeam=" + homeTeam + "&vLine1=" + vLine[0] + "&vLine2=" + vLine[1] + "&vLine3=" + vLine[2] + "&vLine4=" + vLine[3] + "&vLine5=" + vLine[4] + "&vLine6=" + vLine[5] + "&vLine7=" + vLine[6] + "&vLine8=" + vLine[7] + "&vLine9=" + vLine[8] + "&vLine10=" + vLine[9] + "&vLine11=" + vLine[10] + "&vLine12=" + vLine[11] + "&hLine1=" + hLine[0] + "&hLine2=" + hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] + "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&hLine10=" + hLine[9] + "&hLine11=" + hLine[10] + "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vHits=" + vHits + "&hHits=" + hHits + "&vErrors=" + vErrors + "&hErrors=" + hErrors + "' target='_blank'>View Scoresheet</a></div>";
+        } else {
+          addThisHtmlToNL +=
+            "<div class='game'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames'>" + visTeam +
+            "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
+              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + obj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[1] +
+            "</div><div>" + hLine[2] + "</div><div>" + hLine[3] + "</div><div>" + hLine[4] + "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" +
+            obj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" + hErrors + "</div></div><div>Winning Pitcher: " + winningPitcherName + "</div><div>Losing Pitcher: " + losingPitcherName + "</div><div>Save: " + savingPitcherName +
+            "</div><div class='linkToSpreadsheet'><a href='scoresheet.html?vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
+            "&vBatter7=" + vBatter[6] + "&vBatter8=" + vBatter[7] + "&vBatter9=" + vBatter[8] + "&hBatter1=" + hBatter[0] + "&hBatter2=" + hBatter[1] + "&hBatter3=" + hBatter[2] + "&hBatter4=" + hBatter[3] + "&hBatter5=" + hBatter[4] + "&hBatter6=" +
+            hBatter[5] + "&hBatter7=" + hBatter[6] + "&hBatter8=" + hBatter[7] + "&hBatter9=" + hBatter[8] + "&vPitcher=" + vPitcher + "&hPitcher=" + hPitcher + "&vPos1=" + vPos[0] + "&vPos2=" + vPos[1] + "&vPos3=" + vPos[2] + "&vPos4=" + vPos[3] +
+            "&vPos5=" + vPos[4] + "&vPos6=" + vPos[5] + "&vPos7=" + vPos[6] + "&vPos8=" + vPos[7] + "&vPos9=" + vPos[8] + "&hPos1=" + hPos[0] + "&hPos2=" + hPos[1] + "&hPos3=" + hPos[2] + "&hPos4=" + hPos[3] +
+            "&hPos5=" + hPos[4] + "&hPos6=" + hPos[5] + "&hPos7=" + hPos[6] + "&hPos8=" + hPos[7] + "&hPos9=" + hPos[8] + "&visTeam=" + visTeam + "&homeTeam=" + homeTeam + "&vLine1=" + vLine[0] + "&vLine2=" + vLine[1] + "&vLine3=" + vLine[2] + "&vLine4=" + vLine[3] + "&vLine5=" + vLine[4] + "&vLine6=" + vLine[5] + "&vLine7=" + vLine[6] + "&vLine8=" + vLine[7] + "&vLine9=" + vLine[8] + "&hLine1=" + hLine[0] + "&hLine2=" + hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] + "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&vLine10=" + vLine[9] + "&vLine11=" + vLine[10] + "&vLine12=" + vLine[11] + "&hLine1=" + hLine[0] + "&hLine2=" + hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] + "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&hLine10=" + hLine[9] + "&hLine11=" + hLine[10] + "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vErrors=" + vErrors + "&hErrors=" + hErrors + "&vHits=" + vHits + "&hHits=" + hHits + "' target='_blank'>View Scoresheet</a></div>";
+        }
+
+        document.getElementById('algames').innerHTML = addThisHtmlToAL;
+        document.getElementById('nlgames').innerHTML = addThisHtmlToNL;
+
+      }
+
+    }
+
+    function getPos(pos) {
+      switch (pos) {
+        case 1:
+          return "P";
+        case 2:
+          return "C";
+        case 3:
+          return "1B";
+        case 4:
+          return "2B";
+        case 5:
+          return "3B";
+        case 6:
+          return "SS";
+        case 7:
+          return "LF";
+        case 8:
+          return "CF";
+        case 9:
+          return "RF";
+        case 10:
+          return "DH";
+      }
+    }
+
+    function getTeamName(name) {
+      switch (name) {
+        case "ARI":
+          return "Arizona";
+        case "ATL":
+          return "Atlanta";
+        case "BAL":
+          return "Baltimore";
+        case "BOS":
+          return "Boston";
+        case "CHA":
+          return "Chicago (A)";
+        case "CHN":
+          return "Chicago (N)";
+        case "CIN":
+          return "Cincinnati";
+        case "CLE":
+          return "Cleveland";
+        case "COL":
+          return "Colorado";
+        case "DET":
+          return "Detroit";
+        case "HOU":
+          return "Houston";
+        case "KCA":
+          return "Kansas City";
+        case "LAA":
+        case "ANA":
+          return "Los Angeles (A)";
+        case "LAN":
+          return "Los Angeles (N)";
+        case "MIA":
+          return "Miami";
+        case "MIL":
+          return "Milwaukee";
+        case "MIN":
+          return "Minnesota";
+        case "NYA":
+          return "New York (A)";
+        case "NYN":
+          return "New York (N)";
+        case "OAK":
+          return "Oakland";
+        case "PHI":
+          return "Philadelphia";
+        case "PIT":
+          return "Pittsburgh";
+        case "SDN":
+          return "San Diego";
+        case "SEA":
+          return "Seattle";
+        case "SFN":
+          return "San Francisco";
+        case "SLN":
+          return "St. Louis";
+        case "TBA":
+          return "Tampa Bay";
+        case "TEX":
+          return "Texas";
+        case "TOR":
+          return "Toronto";
+        case "WAS":
+          return "Washington";
+        default:
+          return "Teamname?";
+      }
+    }
+
+    function clearDayDropDownBox() {
+      document.getElementById('day').options.length = 0;
+    }
+
+    function getCompleteDate(oldDate) {
+      let newMonths = ["", "", "March", "April", "May", "June", "July", "August", "September", "October"];
+
+      let newMonth = parseInt(oldDate.substr(4, 2));
+      let newDay = oldDate.substr(6, 2);
+      let newYear = oldDate.substr(0, 4);
+
+      return newMonths[newMonth - 1] + " " + newDay;
+    }
+
+    function populateDay(obj) {
+
+      let oldDate = "";
+
+      clearDayDropDownBox();
+
+      let elt = document.getElementById("day");
+
+      // parse complete date
+      for (let i = 0; i < obj.gameday.length; i++) {
+        // get date and rearrange to a readable format for the dropdown box
+        let newDate = getCompleteDate(obj.gameday[i].date);
+
+        if (newDate !== oldDate) {
+          let el = document.createElement("option");
+          el.textContent = newDate;
+          el.value = obj.gameday[i].date;
+          elt.appendChild(el);
+
+          oldDate = newDate;
+        }
+
+      }
+    }
+  </script>
+</head>
+
+<!--HEADER-->
+
+<body>
+  <header>
+    <div class="container">
+      <div id="branding">
+        <h1><span class="highlight">TableTop</span> Baseball Helper</h1>
+      </div>
+    </div>
+  </header>
+
+  <section id="gamedate">
+    <div>
+      <p class="p-inline">Year</p>
+      <select id="year" onchange="loadGames(true)"></select>
+    </div>
+    <div>
+      <p class="p-inline">Day</p>
+      <select id="day" onchange="loadGames(false)"></select>
+    </div>
+  </section>
+
+  <section id="boxes">
+    <div class="container">
+      <div id="algames">
+
+      </div>
+      <div id="nlgames">
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Copyright &copy; 2019 Top Prospect Baseball. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    /* year */
+    var start = 1871;
+    var end = 2018;
+    var options = "";
+    for (var year = end; year >= start; year--) {
+      options += "<option value='" + year + "'>" + year + "</option>";
+    }
+    document.getElementById("year").innerHTML = options;
+  </script>
+
+  <script type="text/javascript">
+    /* auto-load most current year file and get dates
+    and fill out drop-down box */
+    var year = getSelectedText('year');
+    loadGames(true);
+  </script>
+</body>
+
+</html>

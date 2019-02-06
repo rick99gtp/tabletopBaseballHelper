@@ -1,31 +1,1082 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="scoresheetcss.css" />
-    <title>Scoresheet for 3-29-2018</title>
-  </head>
-  <body>
-    <div class="container">
-      <div>VISITING TEAMNAME</div>
-      <div>POS</div>
-      <div>RNG</div>
-      <div>ERROR</div>
-      <div>ARM</div>
-      <div>RUN</div>
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-      <div>6</div>
-      <div>7</div>
-      <div>8</div>
-      <div>9</div>
-      <div>10</div>
-      <div>11</div>
-      <div>12</div>
-      <div>BENCH</div>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="scoresheetcss.css" />
+  <title>Scoresheet for 3-29-2018</title>
+  <script type="text/javascript">
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+    });
+
+    return vars;
+  }
+  </script>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- HEADER -->
+    <div class="headGrid grid-border-left-thick">VISITING TEAMNAME</div>
+    <div class="headGrid grid-border-left-thick">POS</div>
+    <div class="headGrid grid-border-left">RNG</div>
+    <div class="headGrid grid-border-left">ERROR</div>
+    <div class="headGrid grid-border-left">ARM</div>
+    <div class="headGrid grid-border-left">RUN</div>
+    <div class="headGrid grid-border-left-thick">1</div>
+    <div class="headGrid grid-border-left">2</div>
+    <div class="headGrid grid-border-left">3</div>
+    <div class="headGrid grid-border-left">4</div>
+    <div class="headGrid grid-border-left">5</div>
+    <div class="headGrid grid-border-left">6</div>
+    <div class="headGrid grid-border-left">7</div>
+    <div class="headGrid grid-border-left">8</div>
+    <div class="headGrid grid-border-left">9</div>
+    <div class="headGrid grid-border-left">10</div>
+    <div class="headGrid grid-border-left">11</div>
+    <div class="headGrid grid-border-left">12</div>
+    <div class="headGrid bench-header1 grid-border-right-thick grid-border-left-thick">BENCH</div>
+
+    <!-- 1ST ROW -->
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">1</p>
+      <p id="vBatter1Name" class="adjustName">Albert Pujols</p>
     </div>
-  </body>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="vPos1" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="batter-result1"></div>
+    <div class="batter-result2"></div>
+    <div class="batter-result3"></div>
+    <div class="batter-result4"></div>
+    <div class="batter-result5"></div>
+    <div class="batter-result6"></div>
+    <div class="batter-result7"></div>
+    <div class="batter-result8"></div>
+    <div class="batter-result9"></div>
+    <div class="batter-result10"></div>
+    <div class="batter-result11"></div>
+    <div class="batter-result12"></div>
+    <div class="bench1"></div>
+
+    <!-- BACKUP 1ST ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="bench2 grey-cell"></div>
+
+    <!-- 2ND ROW -->
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">2</p>
+      <p id="vBatter2Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="vPos2" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="batter-result13"></div>
+    <div class="batter-result14"></div>
+    <div class="batter-result15"></div>
+    <div class="batter-result16"></div>
+    <div class="batter-result17"></div>
+    <div class="batter-result18"></div>
+    <div class="batter-result19"></div>
+    <div class="batter-result20"></div>
+    <div class="batter-result21"></div>
+    <div class="batter-result22"></div>
+    <div class="batter-result23"></div>
+    <div class="batter-result24"></div>
+    <div class="bench3"></div>
+
+    <!-- BACKUP 2ND ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="bench4 grey-cell"></div>
+
+    <!-- 3RD ROW -->
+
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">3</p>
+      <p id="vBatter3Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="vPos3" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="batter-result25"></div>
+    <div class="batter-result26"></div>
+    <div class="batter-result27"></div>
+    <div class="batter-result28"></div>
+    <div class="batter-result29"></div>
+    <div class="batter-result30"></div>
+    <div class="batter-result31"></div>
+    <div class="batter-result32"></div>
+    <div class="batter-result33"></div>
+    <div class="batter-result34"></div>
+    <div class="batter-result35"></div>
+    <div class="batter-result36"></div>
+    <div class="bench5"></div>
+
+    <!-- BACKUP 3RD ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="bench6 grey-cell"></div>
+
+    <!-- 4TH ROW -->
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">4</p>
+      <p id="vBatter4Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="vPos4" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="batter-result37"></div>
+    <div class="batter-result38"></div>
+    <div class="batter-result39"></div>
+    <div class="batter-result40"></div>
+    <div class="batter-result41"></div>
+    <div class="batter-result42"></div>
+    <div class="batter-result43"></div>
+    <div class="batter-result44"></div>
+    <div class="batter-result45"></div>
+    <div class="batter-result46"></div>
+    <div class="batter-result47"></div>
+    <div class="batter-result48"></div>
+    <div class="bench7"></div>
+
+    <!-- BACKUP 4TH ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="bench8 grey-cell"></div>
+
+    <!-- 5TH ROW -->
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">5</p>
+      <p id="vBatter5Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="vPos5" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="batter-result49"></div>
+    <div class="batter-result50"></div>
+    <div class="batter-result51"></div>
+    <div class="batter-result52"></div>
+    <div class="batter-result53"></div>
+    <div class="batter-result54"></div>
+    <div class="batter-result55"></div>
+    <div class="batter-result56"></div>
+    <div class="batter-result57"></div>
+    <div class="batter-result58"></div>
+    <div class="batter-result59"></div>
+    <div class="batter-result60"></div>
+    <div class="bullpen headGrid bench9">BULLPEN</div>
+
+    <!-- BACKUP 5TH ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="bench10 grey-cell"></div>
+
+    <!-- 6TH ROW -->
+
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">6</p>
+      <p id="vBatter6Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="vPos6" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="batter-result61"></div>
+    <div class="batter-result62"></div>
+    <div class="batter-result63"></div>
+    <div class="batter-result64"></div>
+    <div class="batter-result65"></div>
+    <div class="batter-result66"></div>
+    <div class="batter-result67"></div>
+    <div class="batter-result68"></div>
+    <div class="batter-result69"></div>
+    <div class="batter-result70"></div>
+    <div class="batter-result71"></div>
+    <div class="batter-result72"></div>
+    <div class="bench11"></div>
+
+    <!-- BACKUP 6TH ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="bench12 grey-cell"></div>
+
+    <!-- 7TH ROW -->
+
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">7</p>
+      <p id="vBatter7Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="vPos7" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="batter-result73"></div>
+    <div class="batter-result74"></div>
+    <div class="batter-result75"></div>
+    <div class="batter-result76"></div>
+    <div class="batter-result77"></div>
+    <div class="batter-result78"></div>
+    <div class="batter-result79"></div>
+    <div class="batter-result80"></div>
+    <div class="batter-result81"></div>
+    <div class="batter-result82"></div>
+    <div class="batter-result83"></div>
+    <div class="batter-result84"></div>
+    <div class="bench13"></div>
+
+    <!-- BACKUP 7TH ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="bench14 grey-cell"></div>
+
+    <!-- 8TH ROW -->
+
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">8</p>
+      <p id="vBatter8Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="vPos8" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="batter-result85"></div>
+    <div class="batter-result86"></div>
+    <div class="batter-result87"></div>
+    <div class="batter-result88"></div>
+    <div class="batter-result89"></div>
+    <div class="batter-result90"></div>
+    <div class="batter-result91"></div>
+    <div class="batter-result92"></div>
+    <div class="batter-result93"></div>
+    <div class="batter-result94"></div>
+    <div class="batter-result95"></div>
+    <div class="batter-result96"></div>
+    <div class="bench15"></div>
+
+    <!-- BACKUP 8TH ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="bench16 grey-cell"></div>
+
+    <!-- 9TH ROW -->
+
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">9</p>
+      <p id="vBatter9Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="vPos9" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="batter-result97"></div>
+    <div class="batter-result98"></div>
+    <div class="batter-result99"></div>
+    <div class="batter-result100"></div>
+    <div class="batter-result101"></div>
+    <div class="batter-result102"></div>
+    <div class="batter-result103"></div>
+    <div class="batter-result104"></div>
+    <div class="batter-result105"></div>
+    <div class="batter-result106"></div>
+    <div class="batter-result107"></div>
+    <div class="batter-result108"></div>
+    <div class="bench17"></div>
+
+    <!-- BACKUP 9TH ROW -->
+    <div class="grey-cell grid-border-left-thick"></div>
+    <div class="grey-cell grid-border-left-thick"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell bench18"></div>
+
+    <!-- VISITOR PITCHING SECTION -->
+    <div class="visitor-pitching headGrid">VISITOR PITCHERS</div>
+    <div class="notes headGrid">NOTES</div>
+    <div class="headGrid grid-border-left-thick">IP</div>
+    <div class="headGrid grid-border-left">H</div>
+    <div class="headGrid grid-border-left">R</div>
+    <div class="headGrid grid-border-left">ER</div>
+    <div class="headGrid grid-border-left">BB</div>
+    <div class="headGrid grid-border-left">SO</div>
+    <div class="headGrid grid-border-left">HBP</div>
+    <div class="headGrid grid-border-left">BF</div>
+    <div class="headGrid grid-border-left">WP</div>
+    <div class="visiting-team-notes-header headGrid">VISITING TEAM NOTES</div>
+
+    <!-- ROW 1 -->
+    <div class="vPitcher normal-cell-left"><p id="vPitcherName" class="adjustName">Garret Richards</p></div>
+    <div class="notes-left1"></div>
+    <div class="normal-cell-left"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="visiting-team-notes"></div>
+
+    <!-- ROW 2 -->
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="notes-left2 grey-cell"></div>
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+
+    <!-- ROW 3 -->
+    <div class="normal-cell-left"></div>
+    <div class="notes-left3"></div>
+    <div class="normal-cell-left"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+
+    <!-- ROW 4 -->
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="notes-left4 grey-cell"></div>
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+
+    <!-- ROW 5 -->
+    <div class="normal-cell-left"></div>
+    <div class="notes-left5"></div>
+    <div class="normal-cell-left"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+
+    <!-- ROW 6 -->
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="notes-left6 grey-cell"></div>
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+
+    <!-- ROW 7 -->
+    <div class="normal-cell-left"></div>
+    <div class="notes-left7"></div>
+    <div class="normal-cell-left"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+
+    <!-- ROW 8 -->
+    <div class="grey-cell grid-border-left-thick"></div>
+    <div class="notes-left8 grey-cell"></div>
+    <div class="grey-cell grid-border-left-thick"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+
+    <div class="headGrid scoreboard-team-header">TEAM</div>
+    <div class="headGrid grid-border-left-thick">1</div>
+    <div class="headGrid grid-border-left">2</div>
+    <div class="headGrid grid-border-left">3</div>
+    <div class="headGrid grid-border-left">4</div>
+    <div class="headGrid grid-border-left">5</div>
+    <div class="headGrid grid-border-left">6</div>
+    <div class="headGrid grid-border-left">7</div>
+    <div class="headGrid grid-border-left">8</div>
+    <div class="headGrid grid-border-left">9</div>
+    <div class="headGrid grid-border-left">10</div>
+    <div class="headGrid grid-border-left">11</div>
+    <div class="headGrid grid-border-left">12</div>
+    <div class="headGrid grid-border-left-thick">R</div>
+    <div class="headGrid grid-border-left">H</div>
+    <div class="headGrid grid-border-left grid-border-right-thick">E</div>
+
+    <div id="visTeam" class="scoreboard-team1"></div>
+    <div id="vLine1" class="grid-border-left-thick grid-border-bottom center-text2"></div>
+    <div id="vLine2" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLine3" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLine4" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLine5" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLine7" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLine6" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLine8" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLine9" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLine10" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLine11" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLine12" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLineR" class="grid-border-left-thick grid-border-bottom center-text2"></div>
+    <div id="vLineH" class="grid-border-left grid-border-bottom center-text2"></div>
+    <div id="vLineE" class="grid-border-left grid-border-right-thick grid-border-bottom center-text2"></div>
+
+    <div id="homeTeam" class="scoreboard-team2 grey-cell"></div>
+    <div id="hLine1" class="grid-border-left-thick grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine2" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine3" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine4" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine5" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine6" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine7" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine8" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine9" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine10" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine11" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLine12" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLineR" class="grid-border-left-thick grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLineH" class="grid-border-left grey-cell center-text2 faded-color-bottom"></div>
+    <div id="hLineE" class="grid-border-left grid-border-right-thick grey-cell center-text2 faded-color-bottom"></div>
+
+    <!-- HOME SECTION -->
+    <!-- HEADER -->
+    <div class="headGrid grid-border-left-thick">HOME TEAMNAME</div>
+    <div class="headGrid grid-border-left-thick">POS</div>
+    <div class="headGrid grid-border-left">RNG</div>
+    <div class="headGrid grid-border-left">ERROR</div>
+    <div class="headGrid grid-border-left">ARM</div>
+    <div class="headGrid grid-border-left">RUN</div>
+    <div class="headGrid grid-border-left-thick">1</div>
+    <div class="headGrid grid-border-left">2</div>
+    <div class="headGrid grid-border-left">3</div>
+    <div class="headGrid grid-border-left">4</div>
+    <div class="headGrid grid-border-left">5</div>
+    <div class="headGrid grid-border-left">6</div>
+    <div class="headGrid grid-border-left">7</div>
+    <div class="headGrid grid-border-left">8</div>
+    <div class="headGrid grid-border-left">9</div>
+    <div class="headGrid grid-border-left">10</div>
+    <div class="headGrid grid-border-left">11</div>
+    <div class="headGrid grid-border-left">12</div>
+    <div class="headGrid bench-header2 grid-border-right-thick grid-border-left-thick">BENCH</div>
+
+    <!-- 1ST ROW -->
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">1</p>
+      <p id="hBatter1Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="hPos1" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="hbatter-result1"></div>
+    <div class="hbatter-result2"></div>
+    <div class="hbatter-result3"></div>
+    <div class="hbatter-result4"></div>
+    <div class="hbatter-result5"></div>
+    <div class="hbatter-result6"></div>
+    <div class="hbatter-result7"></div>
+    <div class="hbatter-result8"></div>
+    <div class="hbatter-result9"></div>
+    <div class="hbatter-result10"></div>
+    <div class="hbatter-result11"></div>
+    <div class="hbatter-result12"></div>
+    <div class="hbench1"></div>
+
+    <!-- BACKUP 1ST ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="hbench2 grey-cell"></div>
+
+    <!-- 2ND ROW -->
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">2</p>
+      <p id="hBatter2Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="hPos2" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="hbatter-result13"></div>
+    <div class="hbatter-result14"></div>
+    <div class="hbatter-result15"></div>
+    <div class="hbatter-result16"></div>
+    <div class="hbatter-result17"></div>
+    <div class="hbatter-result18"></div>
+    <div class="hbatter-result19"></div>
+    <div class="hbatter-result20"></div>
+    <div class="hbatter-result21"></div>
+    <div class="hbatter-result22"></div>
+    <div class="hbatter-result23"></div>
+    <div class="hbatter-result24"></div>
+    <div class="hbench3"></div>
+
+    <!-- BACKUP 2ND ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="hbench4 grey-cell"></div>
+
+    <!-- 3RD ROW -->
+
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">3</p>
+      <p id="hBatter3Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="hPos3" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="hbatter-result25"></div>
+    <div class="hbatter-result26"></div>
+    <div class="hbatter-result27"></div>
+    <div class="hbatter-result28"></div>
+    <div class="hbatter-result29"></div>
+    <div class="hbatter-result30"></div>
+    <div class="hbatter-result31"></div>
+    <div class="hbatter-result32"></div>
+    <div class="hbatter-result33"></div>
+    <div class="hbatter-result34"></div>
+    <div class="hbatter-result35"></div>
+    <div class="hbatter-result36"></div>
+    <div class="hbench5"></div>
+
+    <!-- BACKUP 3RD ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="hbench6 grey-cell"></div>
+
+    <!-- 4TH ROW -->
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">4</p>
+      <p id="hBatter4Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="hPos4" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="hbatter-result37"></div>
+    <div class="hbatter-result38"></div>
+    <div class="hbatter-result39"></div>
+    <div class="hbatter-result40"></div>
+    <div class="hbatter-result41"></div>
+    <div class="hbatter-result42"></div>
+    <div class="hbatter-result43"></div>
+    <div class="hbatter-result44"></div>
+    <div class="hbatter-result45"></div>
+    <div class="hbatter-result46"></div>
+    <div class="hbatter-result47"></div>
+    <div class="hbatter-result48"></div>
+    <div class="hbench7"></div>
+
+    <!-- BACKUP 4TH ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="hbench8 grey-cell"></div>
+
+    <!-- 5TH ROW -->
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">5</p>
+      <p id="hBatter5Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="hPos5" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="hbatter-result49"></div>
+    <div class="hbatter-result50"></div>
+    <div class="hbatter-result51"></div>
+    <div class="hbatter-result52"></div>
+    <div class="hbatter-result53"></div>
+    <div class="hbatter-result54"></div>
+    <div class="hbatter-result55"></div>
+    <div class="hbatter-result56"></div>
+    <div class="hbatter-result57"></div>
+    <div class="hbatter-result58"></div>
+    <div class="hbatter-result59"></div>
+    <div class="hbatter-result60"></div>
+    <div class="bullpen headGrid hbench9">BULLPEN</div>
+
+    <!-- BACKUP 5TH ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="hbench10 grey-cell"></div>
+
+    <!-- 6TH ROW -->
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">6</p>
+      <p id="hBatter6Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="hPos6" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="hbatter-result61"></div>
+    <div class="hbatter-result62"></div>
+    <div class="hbatter-result63"></div>
+    <div class="hbatter-result64"></div>
+    <div class="hbatter-result65"></div>
+    <div class="hbatter-result66"></div>
+    <div class="hbatter-result67"></div>
+    <div class="hbatter-result68"></div>
+    <div class="hbatter-result69"></div>
+    <div class="hbatter-result70"></div>
+    <div class="hbatter-result71"></div>
+    <div class="hbatter-result72"></div>
+    <div class="hbench11"></div>
+
+    <!-- BACKUP 6TH ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="hbench12 grey-cell"></div>
+
+    <!-- 7TH ROW -->
+
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">7</p>
+      <p id="hBatter7Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="hPos7" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="hbatter-result73"></div>
+    <div class="hbatter-result74"></div>
+    <div class="hbatter-result75"></div>
+    <div class="hbatter-result76"></div>
+    <div class="hbatter-result77"></div>
+    <div class="hbatter-result78"></div>
+    <div class="hbatter-result79"></div>
+    <div class="hbatter-result80"></div>
+    <div class="hbatter-result81"></div>
+    <div class="hbatter-result82"></div>
+    <div class="hbatter-result83"></div>
+    <div class="hbatter-result84"></div>
+    <div class="hbench13"></div>
+
+    <!-- BACKUP 7TH ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="hbench14 grey-cell"></div>
+
+    <!-- 8TH ROW -->
+
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">8</p>
+      <p id="hBatter8Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="hPos8" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="hbatter-result85"></div>
+    <div class="hbatter-result86"></div>
+    <div class="hbatter-result87"></div>
+    <div class="hbatter-result88"></div>
+    <div class="hbatter-result89"></div>
+    <div class="hbatter-result90"></div>
+    <div class="hbatter-result91"></div>
+    <div class="hbatter-result92"></div>
+    <div class="hbatter-result93"></div>
+    <div class="hbatter-result94"></div>
+    <div class="hbatter-result95"></div>
+    <div class="hbatter-result96"></div>
+    <div class="hbench15"></div>
+
+    <!-- BACKUP 8TH ROW -->
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell-left grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell grey-cell last-row"></div>
+    <div class="normal-cell-before-batter-result grey-cell last-row"></div>
+    <div class="hbench16 grey-cell"></div>
+
+    <!-- 9TH ROW -->
+
+    <div class="vBatter normal-cell-left">
+      <p class="lineupNumbersLeft">9</p>
+      <p id="hBatter9Name" class="adjustName">Albert Pujols</p>
+    </div>
+    <div class="vBatter normal-cell-left center-text">
+      <p id="hPos9" class="adjustPos"></p>
+    </div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell-before-batter-result"></div>
+    <div class="hbatter-result97"></div>
+    <div class="hbatter-result98"></div>
+    <div class="hbatter-result99"></div>
+    <div class="hbatter-result100"></div>
+    <div class="hbatter-result101"></div>
+    <div class="hbatter-result102"></div>
+    <div class="hbatter-result103"></div>
+    <div class="hbatter-result104"></div>
+    <div class="hbatter-result105"></div>
+    <div class="hbatter-result106"></div>
+    <div class="hbatter-result107"></div>
+    <div class="hbatter-result108"></div>
+    <div class="hbench17"></div>
+
+    <!-- BACKUP 9TH ROW -->
+    <div class="grey-cell grid-border-left-thick"></div>
+    <div class="grey-cell grid-border-left-thick"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell grid-border-left"></div>
+    <div class="grey-cell hbench18"></div>
+
+    <!-- HOME PITCHING SECTION -->
+    <div class="home-pitching headGrid">HOME PITCHERS</div>
+    <div class="home-notes headGrid">NOTES</div>
+    <div class="headGrid grid-border-left-thick">IP</div>
+    <div class="headGrid grid-border-left">H</div>
+    <div class="headGrid grid-border-left">R</div>
+    <div class="headGrid grid-border-left">ER</div>
+    <div class="headGrid grid-border-left">BB</div>
+    <div class="headGrid grid-border-left">SO</div>
+    <div class="headGrid grid-border-left">HBP</div>
+    <div class="headGrid grid-border-left">BF</div>
+    <div class="headGrid grid-border-left">WP</div>
+    <div class="home-team-notes-header headGrid">HOME TEAM NOTES</div>
+
+    <!-- ROW 1 -->
+    <div class="vPitcher normal-cell-left"><p id="hPitcherName" class="adjustName">Garret Richards</p></div>
+    <div class="hnotes-left1"></div>
+    <div class="normal-cell-left"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="home-team-notes grid-border-bottom-thick"></div>
+
+
+    <!-- ROW 2 -->
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="hnotes-left2 grey-cell"></div>
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+
+    <!-- ROW 3 -->
+    <div class="normal-cell-left"></div>
+    <div class="hnotes-left3"></div>
+    <div class="normal-cell-left"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+
+    <!-- ROW 4 -->
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="hnotes-left4 grey-cell"></div>
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+
+    <!-- ROW 5 -->
+    <div class="normal-cell-left"></div>
+    <div class="hnotes-left5"></div>
+    <div class="normal-cell-left"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+
+    <!-- ROW 6 -->
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="hnotes-left6 grey-cell"></div>
+    <div class="normal-cell-left grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+    <div class="normal-cell grey-cell"></div>
+
+    <!-- ROW 7 -->
+    <div class="normal-cell-left"></div>
+    <div class="hnotes-left7"></div>
+    <div class="normal-cell-left"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+    <div class="normal-cell"></div>
+
+    <!-- ROW 8 -->
+    <div class="grey-cell grid-border-left-thick grid-border-bottom-thick"></div>
+    <div class="hnotes-left8 grey-cell grid-border-bottom-thick"></div>
+    <div class="grey-cell grid-border-left-thick grid-border-bottom-thick"></div>
+    <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
+    <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
+    <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
+    <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
+    <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
+    <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
+    <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
+    <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
+    <div class="copyright copyright-place center-text"><p>&copy; 2019 Top Prospect Baseball &nbsp; &nbsp; https:www.wordpress.org/tabletopHelper.html</p></div>
+
+  </div>
+  <script type="text/javascript">
+  getUrlVars();
+  showPlayers();
+
+  // get lineups and PITCHERS
+
+  function showPlayers() {
+    // visitors first
+    for(let i = 1; i < 10; i++) {
+      let name = getUrlVars()["vBatter" + i];
+      let newName = name.replace("%20"," ");
+      document.getElementById("vBatter" + i + "Name").innerHTML = newName;
+    }
+
+    // get positions
+    for(let i=1; i< 10; i++) {
+      let pos = getUrlVars()["vPos" + i];
+      document.getElementById("vPos" + i).innerHTML = pos;
+    }
+
+    name = getUrlVars()["vPitcher"];
+    newName = name.replace(/%20/g," ");
+    document.getElementById("vPitcherName").innerHTML = newName;
+
+    // home next
+    for(let i = 1; i < 10; i++) {
+      var name = getUrlVars()["hBatter" + i];
+      var newName = name.replace("%20"," ");
+      document.getElementById("hBatter" + i + "Name").innerHTML = newName;
+    }
+
+    // get positions
+    for(let i=1; i< 10; i++) {
+      let pos = getUrlVars()["hPos" + i];
+      document.getElementById("hPos" + i).innerHTML = pos;
+    }
+
+    name = getUrlVars()["hPitcher"];
+    newName = name.replace(/%20/g," ");
+    document.getElementById("hPitcherName").innerHTML = newName;
+
+    name = getUrlVars()["visTeam"];
+    newName = name.replace(/%20/g," ");
+    document.getElementById("visTeam").innerHTML = newName;
+
+    name = getUrlVars()["homeTeam"];
+    newName = name.replace(/%20/g," ");
+    document.getElementById("homeTeam").innerHTML = newName;
+
+    // get all visitor and home runs
+    for(let i=1; i < 13; i++) {
+      var vruns = getUrlVars()["vLine" + i];
+      var hruns = getUrlVars()["hLine" + i];
+      console.log("hruns: " + hruns);
+
+      //if(vRuns !=="undefined") {
+        document.getElementById("vLine" + i).innerHTML = vruns;
+        document.getElementById("hLine" + i).innerHTML = hruns;
+    //  }
+
+    }
+
+    var vTotalRuns = getUrlVars()["vRuns"];
+    var hTotalRuns = getUrlVars()["hRuns"];
+
+    document.getElementById("vLineR").innerHTML = vTotalRuns;
+    document.getElementById("hLineR").innerHTML = hTotalRuns;
+
+    var vHits = getUrlVars()["vHits"];
+    var hHits = getUrlVars()["hHits"];
+
+    document.getElementById("vLineH").innerHTML = vHits;
+    document.getElementById("hLineH").innerHTML = hHits;
+
+    var vErrors = getUrlVars()["vErrors"];
+    var hErrors = getUrlVars()["hErrors"];
+
+    document.getElementById("vLineE").innerHTML = vErrors;
+    document.getElementById("hLineE").innerHTML = hErrors;
+
+  }
+
+  </script>
+</body>
+
 </html>
