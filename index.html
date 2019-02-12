@@ -11,7 +11,7 @@
 
   <script>
     function getSelectedText(elementId) {
-      var elt = document.getElementById(elementId);
+      let elt = document.getElementById(elementId);
 
       if (elt.selectedIndex == -1)
         return null;
@@ -19,114 +19,122 @@
       return elt.options[elt.selectedIndex].text;
     }
 
-    function loadGames(reloadDay) {
-      /* first load dates into day select dropdown */
-      /* get file to parse */
-      var xmlhttp = new XMLHttpRequest();
+    function setMyObj() {
+      let xmlhttp = new XMLHttpRequest();
+
       xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          var myObj = JSON.parse(this.responseText);
+          myObj = JSON.parse(this.responseText);
 
-          /* get dates and populate drop-down box */
-          if (reloadDay) {
-            populateDay(myObj);
-            populateTeams(myObj);
-          }
-
-          //document.getElementById("demo").innerHTML = "it works";
-
-          getGames(myObj);
+          setDay();
+          getGames();
         }
       };
 
-      var gamefile = getGameFile(document.getElementById('year').value);
+      let gamefile = getGameFile();
 
       xmlhttp.open("GET", gamefile, true);
       xmlhttp.send();
     }
 
-    function getGameFile(year) {
+    function getGameFile() {
 
-      switch (parseInt(year)) {
-        case 2018:
-          return "https://gist.githubusercontent.com/rick99gtp/719250fc21468691765c6ad07eeda69c/raw/d4db77ffe4d0f4de5a9598b9f9362aecfc44af9c/gl2018.txt";
-        case 2017:
-          return "https://gist.githubusercontent.com/rick99gtp/e8d8f3e3e7b87bbde2e348eee1688d7c/raw/3bc60c9cf487fb4d073dcac6a4c2f2471897f14e/gl2017.txt";
-        case 2016:
-          return "https://gist.githubusercontent.com/rick99gtp/16bf2bcf0892a20ff61786a87bf1c12f/raw/6526d593db7ea8b82aa09f255a84987c8faba2c7/gistfile1.txt";
+      if (curSeason === "Regular") {
+        // Regular Season Games
+        switch (parseInt(curYear)) {
+          case 2018:
+            return "https://gist.githubusercontent.com/rick99gtp/719250fc21468691765c6ad07eeda69c/raw/d4db77ffe4d0f4de5a9598b9f9362aecfc44af9c/gl2018.txt";
+          case 2017:
+            return "https://gist.githubusercontent.com/rick99gtp/e8d8f3e3e7b87bbde2e348eee1688d7c/raw/3bc60c9cf487fb4d073dcac6a4c2f2471897f14e/gl2017.txt";
+          case 2016:
+            return "https://gist.githubusercontent.com/rick99gtp/16bf2bcf0892a20ff61786a87bf1c12f/raw/6526d593db7ea8b82aa09f255a84987c8faba2c7/gistfile1.txt";
+        }
+      } else if (curSeason === "Playoffs") {
+        // Playoff games
+        switch (parseInt(curYear)) {
+          case 2018:
+            return;
+          case 2017:
+            return;
+          case 2016:
+            return;
+        }
+      } else {
+        // All-Star Games
+        return "https://gist.githubusercontent.com/rick99gtp/433cd878e5b866dab5f8e612c5c22941/raw/9f4776f2a95264d14053be1112fe09120afb4187/asgl";
       }
     }
 
-    function getGames(obj) {
+    function getGames() {
       // look through obj and start pulling information
       let thisDayValue = document.getElementById("day").value;
+
       let startDaySet = false;
       let startDay = 0;
       let endDay = 0;
-
       let teamSelected = 0 // 0 is ALL TEAMS
 
       //get the first record and the last record for this day
-      for (var i = 0; i < obj.gameday.length; i++) {
-        if (obj.gameday[i].date === thisDayValue) {
-          // found the correct Day, put in var
+      for (let i = 0; i < myObj.gameday.length; i++) {
+        if (myObj.gameday[i].date === thisDayValue) {
+          // found the correct Day, put in
           if (startDaySet === false) {
             startDaySet = true;
             startDay = i;
           }
-
           endDay = i;
         }
       }
 
       // list games
-      //for (var gameLoop = startDay; gameLoop < endDay; gameLoop++) {
-      var addThisHtmlToAL = "";
-      var addThisHtmlToNL = "";
 
-      for (var gameLoop = startDay; gameLoop < endDay; gameLoop++) {
+      let addThisHtmlToAL = "";
+      let addThisHtmlToNL = "";
+
+      for (let gameLoop = startDay; gameLoop < endDay + 1; gameLoop++) {
+
         // array to track runs per innings
-        var vRunsPerInning = 0;
-        var hRunsPerInning = 0;
+        let vRunsPerInning = 0;
+        let hRunsPerInning = 0;
 
         // get Team Names
-        var visTeam = getTeamName(obj.gameday[gameLoop].visteam);
-        var homeTeam = getTeamName(obj.gameday[gameLoop].hometeam);
+        let visTeam = getTeamName(myObj.gameday[gameLoop].visteam);
+        let homeTeam = getTeamName(myObj.gameday[gameLoop].hometeam);
 
         // get line scores
-        var visLineScore = obj.gameday[gameLoop].vislinescore;
-        var homeLineScore = obj.gameday[gameLoop].homelinescore;
+        let visLineScore = myObj.gameday[gameLoop].vislinescore;
+        let homeLineScore = myObj.gameday[gameLoop].homelinescore;
 
-        var vHits = obj.gameday[gameLoop].vish;
-        var hHits = obj.gameday[gameLoop].homeh;
+        let vHits = myObj.gameday[gameLoop].vish;
+        let hHits = myObj.gameday[gameLoop].homeh;
 
-        var vErrors = obj.gameday[gameLoop].vise;
-        var hErrors = obj.gameday[gameLoop].homee;
+        let vErrors = myObj.gameday[gameLoop].vise;
+        let hErrors = myObj.gameday[gameLoop].homee;
 
-        var winningPitcherName = obj.gameday[gameLoop].winningpitchername;
-        var losingPitcherName = obj.gameday[gameLoop].losingpitchername;
-        var savingPitcherName = obj.gameday[gameLoop].savingpitchername;
+        let winningPitcherName = myObj.gameday[gameLoop].winningpitchername;
+        let losingPitcherName = myObj.gameday[gameLoop].losingpitchername;
+        let savingPitcherName = myObj.gameday[gameLoop].savingpitchername;
 
-        var vLine = ["", "", "", "", "", "", "", "", "", "", " ", " ", " "];
-        var vCount = 0;
+        let vLine = ["", "", "", "", "", "", "", "", "", "", " ", " ", " "];
+        let vCount = 0;
 
-        var hLine = ["", "", "", "", "", "", "", "", "", "", " ", " ", " "];
-        var hCount = 0;
+        let hLine = ["", "", "", "", "", "", "", "", "", "", " ", " ", " "];
+        let hCount = 0;
 
-        var vBatter = ["", "", "", "", "", "", "", "", ""];
-        var hBatter = ["", "", "", "", "", "", "", "", ""];
+        let vBatter = ["", "", "", "", "", "", "", "", ""];
+        let hBatter = ["", "", "", "", "", "", "", "", ""];
 
-        var vPos = ["", "", "", "", "", "", "", "", ""];
-        var hPos = ["", "", "", "", "", "", "", "", ""];
+        let vPos = ["", "", "", "", "", "", "", "", ""];
+        let hPos = ["", "", "", "", "", "", "", "", ""];
 
-        var vPitcher = "";
-        var hPitcher = "";
+        let vPitcher = "";
+        let hPitcher = "";
 
-        var visScore = 0;
-        var homeScore = 0;
+        let visScore = 0;
+        let homeScore = 0;
 
         // create visitor linescore array
-        for (var i = 0; i < 13; i++) {
+        for (let i = 0; i < 13; i++) {
           // if next character in linescore is a '(' then a team has scored more than one digit of runs
           // need to get two characters
           if (visLineScore.substr(vCount, 1) !== "(") {
@@ -146,7 +154,7 @@
         }
 
         // create home linescore array
-        for (var i = 0; i < 13; i++) {
+        for (let i = 0; i < 13; i++) {
           // if next character in linescore is a '(' then a team has scored more than one digit of runs
           // need to get two characters
           if (homeLineScore.substr(hCount, 1) !== "(") {
@@ -165,68 +173,72 @@
         }
 
         // visitor scored
-        vScore = obj.gameday[gameLoop].visscore;
-        hScore = obj.gameday[gameLoop].homescore;
+        vScore = myObj.gameday[gameLoop].visscore;
+        hScore = myObj.gameday[gameLoop].homescore;
 
         // get vBatters
-        vBatter[0] = obj.gameday[gameLoop].visplayername1;
-        vBatter[1] = obj.gameday[gameLoop].visplayername2;
-        vBatter[2] = obj.gameday[gameLoop].visplayername3;
-        vBatter[3] = obj.gameday[gameLoop].visplayername4;
-        vBatter[4] = obj.gameday[gameLoop].visplayername5;
-        vBatter[5] = obj.gameday[gameLoop].visplayername6;
-        vBatter[6] = obj.gameday[gameLoop].visplayername7;
-        vBatter[7] = obj.gameday[gameLoop].visplayername8;
-        vBatter[8] = obj.gameday[gameLoop].visplayername9;
+        vBatter[0] = myObj.gameday[gameLoop].visplayername1;
+        vBatter[1] = myObj.gameday[gameLoop].visplayername2;
+        vBatter[2] = myObj.gameday[gameLoop].visplayername3;
+        vBatter[3] = myObj.gameday[gameLoop].visplayername4;
+        vBatter[4] = myObj.gameday[gameLoop].visplayername5;
+        vBatter[5] = myObj.gameday[gameLoop].visplayername6;
+        vBatter[6] = myObj.gameday[gameLoop].visplayername7;
+        vBatter[7] = myObj.gameday[gameLoop].visplayername8;
+        vBatter[8] = myObj.gameday[gameLoop].visplayername9;
 
-        vPos[0] = getPos(obj.gameday[gameLoop].visplayerposition1);
-        vPos[1] = getPos(obj.gameday[gameLoop].visplayerposition2);
-        vPos[2] = getPos(obj.gameday[gameLoop].visplayerposition3);
-        vPos[3] = getPos(obj.gameday[gameLoop].visplayerposition4);
-        vPos[4] = getPos(obj.gameday[gameLoop].visplayerposition5);
-        vPos[5] = getPos(obj.gameday[gameLoop].visplayerposition6);
-        vPos[6] = getPos(obj.gameday[gameLoop].visplayerposition7);
-        vPos[7] = getPos(obj.gameday[gameLoop].visplayerposition8);
-        vPos[8] = getPos(obj.gameday[gameLoop].visplayerposition9);
+        vPos[0] = getPos(myObj.gameday[gameLoop].visplayerposition1);
+        vPos[1] = getPos(myObj.gameday[gameLoop].visplayerposition2);
+        vPos[2] = getPos(myObj.gameday[gameLoop].visplayerposition3);
+        vPos[3] = getPos(myObj.gameday[gameLoop].visplayerposition4);
+        vPos[4] = getPos(myObj.gameday[gameLoop].visplayerposition5);
+        vPos[5] = getPos(myObj.gameday[gameLoop].visplayerposition6);
+        vPos[6] = getPos(myObj.gameday[gameLoop].visplayerposition7);
+        vPos[7] = getPos(myObj.gameday[gameLoop].visplayerposition8);
+        vPos[8] = getPos(myObj.gameday[gameLoop].visplayerposition9);
 
-        vPitcher = obj.gameday[gameLoop].vispitchername;
+        vPitcher = myObj.gameday[gameLoop].vispitchername;
 
-        hBatter[0] = obj.gameday[gameLoop].homeplayername1;
-        hBatter[1] = obj.gameday[gameLoop].homeplayername2;
-        hBatter[2] = obj.gameday[gameLoop].homeplayername3;
-        hBatter[3] = obj.gameday[gameLoop].homeplayername4;
-        hBatter[4] = obj.gameday[gameLoop].homeplayername5;
-        hBatter[5] = obj.gameday[gameLoop].homeplayername6;
-        hBatter[6] = obj.gameday[gameLoop].homeplayername7;
-        hBatter[7] = obj.gameday[gameLoop].homeplayername8;
-        hBatter[8] = obj.gameday[gameLoop].homeplayername9;
+        hBatter[0] = myObj.gameday[gameLoop].homeplayername1;
+        hBatter[1] = myObj.gameday[gameLoop].homeplayername2;
+        hBatter[2] = myObj.gameday[gameLoop].homeplayername3;
+        hBatter[3] = myObj.gameday[gameLoop].homeplayername4;
+        hBatter[4] = myObj.gameday[gameLoop].homeplayername5;
+        hBatter[5] = myObj.gameday[gameLoop].homeplayername6;
+        hBatter[6] = myObj.gameday[gameLoop].homeplayername7;
+        hBatter[7] = myObj.gameday[gameLoop].homeplayername8;
+        hBatter[8] = myObj.gameday[gameLoop].homeplayername9;
 
-        hPos[0] = getPos(obj.gameday[gameLoop].homeplayerposition1);
-        hPos[1] = getPos(obj.gameday[gameLoop].homeplayerposition2);
-        hPos[2] = getPos(obj.gameday[gameLoop].homeplayerposition3);
-        hPos[3] = getPos(obj.gameday[gameLoop].homeplayerposition4);
-        hPos[4] = getPos(obj.gameday[gameLoop].homeplayerposition5);
-        hPos[5] = getPos(obj.gameday[gameLoop].homeplayerposition6);
-        hPos[6] = getPos(obj.gameday[gameLoop].homeplayerposition7);
-        hPos[7] = getPos(obj.gameday[gameLoop].homeplayerposition8);
-        hPos[8] = getPos(obj.gameday[gameLoop].homeplayerposition9);
+        hPos[0] = getPos(myObj.gameday[gameLoop].homeplayerposition1);
+        hPos[1] = getPos(myObj.gameday[gameLoop].homeplayerposition2);
+        hPos[2] = getPos(myObj.gameday[gameLoop].homeplayerposition3);
+        hPos[3] = getPos(myObj.gameday[gameLoop].homeplayerposition4);
+        hPos[4] = getPos(myObj.gameday[gameLoop].homeplayerposition5);
+        hPos[5] = getPos(myObj.gameday[gameLoop].homeplayerposition6);
+        hPos[6] = getPos(myObj.gameday[gameLoop].homeplayerposition7);
+        hPos[7] = getPos(myObj.gameday[gameLoop].homeplayerposition8);
+        hPos[8] = getPos(myObj.gameday[gameLoop].homeplayerposition9);
 
-        hPitcher = obj.gameday[gameLoop].homepitchername;
+        hPitcher = myObj.gameday[gameLoop].homepitchername;
 
         // get extra inning runs, if any
-        var vExtraInningRuns = obj.gameday[gameLoop].visscore - vRunsPerInning;
+        let vExtraInningRuns = myObj.gameday[gameLoop].visscore - vRunsPerInning;
 
-        var hExtraInningRuns = obj.gameday[gameLoop].homescore - hRunsPerInning;
+        let hExtraInningRuns = myObj.gameday[gameLoop].homescore - hRunsPerInning;
 
         // Show Box Score
-        if (obj.gameday[gameLoop].homeleague === "AL") {
+
+        let homeLeague = myObj.gameday[gameLoop].homeleague;
+
+        if (homeLeague.indexOf("AL") !== -1) {
           addThisHtmlToAL +=
             "<div class='game'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames'>" + visTeam +
             "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
-              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + obj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[1] +
+              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
+              1] +
             "</div><div>" + hLine[2] +
             "</div><div>" + hLine[3] + "</div><div>" + hLine[4] +
-            "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" + obj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" +
+            "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" +
             hErrors + "</div></div><div>Winning Pitcher: " + winningPitcherName + "</div><div>Losing Pitcher: " + losingPitcherName + "</div><div>Save: " + savingPitcherName +
             "</div><div class='linkToSpreadsheet'><a href='scoresheet.html?vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
             "&vBatter7=" + vBatter[6] + "&vBatter8=" + vBatter[7] + "&vBatter9=" + vBatter[8] + "&hBatter1=" + hBatter[0] + "&hBatter2=" + hBatter[1] + "&hBatter3=" + hBatter[2] + "&hBatter4=" + hBatter[3] + "&hBatter5=" + hBatter[4] + "&hBatter6=" +
@@ -240,9 +252,10 @@
           addThisHtmlToNL +=
             "<div class='game'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames'>" + visTeam +
             "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
-              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + obj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[1] +
+              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
+              1] +
             "</div><div>" + hLine[2] + "</div><div>" + hLine[3] + "</div><div>" + hLine[4] + "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" +
-            obj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" + hErrors + "</div></div><div>Winning Pitcher: " + winningPitcherName + "</div><div>Losing Pitcher: " + losingPitcherName + "</div><div>Save: " + savingPitcherName +
+            myObj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" + hErrors + "</div></div><div>Winning Pitcher: " + winningPitcherName + "</div><div>Losing Pitcher: " + losingPitcherName + "</div><div>Save: " + savingPitcherName +
             "</div><div class='linkToSpreadsheet'><a href='scoresheet.html?vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
             "&vBatter7=" + vBatter[6] + "&vBatter8=" + vBatter[7] + "&vBatter9=" + vBatter[8] + "&hBatter1=" + hBatter[0] + "&hBatter2=" + hBatter[1] + "&hBatter3=" + hBatter[2] + "&hBatter4=" + hBatter[3] + "&hBatter5=" + hBatter[4] + "&hBatter6=" +
             hBatter[5] + "&hBatter7=" + hBatter[6] + "&hBatter8=" + hBatter[7] + "&hBatter9=" + hBatter[8] + "&vPitcher=" + vPitcher + "&hPitcher=" + hPitcher + "&vPos1=" + vPos[0] + "&vPos2=" + vPos[1] + "&vPos3=" + vPos[2] + "&vPos4=" + vPos[3] +
@@ -288,6 +301,10 @@
 
     function getTeamName(name) {
       switch (name) {
+        case "NLS":
+          return "National League All-Stars";
+        case "ALS":
+          return "American League All-Stars";
         case "ARI":
           return "Arizona";
         case "ATL":
@@ -358,6 +375,10 @@
       document.getElementById('day').options.length = 0;
     }
 
+    function clearTeamDropDownBox() {
+      document.getElementById('team').options.length = 0;
+    }
+
     function getCompleteDate(oldDate) {
       let newMonths = ["", "", "March", "April", "May", "June", "July", "August", "September", "October"];
 
@@ -368,442 +389,7 @@
       return newMonths[newMonth - 1] + " " + newDay;
     }
 
-    // get year and list of teams - put in teams dropdown listbox
-    function populateTeams(obj) {
-
-      let thisYear = getGameFile(document.getElementById('year').value);
-
-      getTeamNames(document.getElementById('year').value);
-
-    }
-
-    function getTeamNames(year) {
-      let teamName = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""];
-      let teamAcronym = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""];
-
-      let curYear = 2018;
-      let teamCount = 0;
-
-      // Arizona Diamondbacks
-      if (year >= 1998 && year <= curYear) {
-        teamName[teamCount] = "Arizona Diamondbacks";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Atlanta Braves
-      if (year >= 1876 && year <= 1882) {
-        teamName[teamCount] = "Boston Red Stockings";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1883 && year <= 1906) {
-        teamName[teamCount] === "Boston Beaneaters";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1907 && year <= 1910) {
-        teamName[teamCount] = "Boston Doves";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year === 1911) {
-        teamName[teamCount] = "Boston Rustlers";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1912 && year <= 1935) {
-        teamName[teamCount] = "Boston Braves";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1936 && year <= 1940) {
-        teamName[teamCount] = "Boston Bees";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1941 && year <= 1952) {
-        teamName[teamCount] = "Boston Braves";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1953 && year <= 1965) {
-        teamName[teamCount] = "Milwaukee Braves";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1966 && year <= curYear) {
-        teamName[teamCount] = "Atlanta Braves";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Baltimore Orioles
-      if (year === 1901) {
-        teamName[teamCount] = "Milwaukee Brewers";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1902 && year <= 1953) {
-        teamName[teamCount] = "St. Louis Browns";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1954 && year <= curYear) {
-        teamName[teamCount] = "Baltimore Orioles";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Boston Red Sox
-      if (year >= 1901 && year <= 1907) {
-        teamName[teamCount] = "Boston Americans";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1908 && year <= curYear) {
-        teamName[teamCount] = "Boston Red Sox";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Chicago Cubs
-      if (year >= 1876 && year <= 1889) {
-        teamName[teamCount] = "Chicago White Stockings";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1890 && year <= 1897) {
-        teamName[teamCount] = "Chicago Colts";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1898 && year <= 1902) {
-        teamName[teamCount] = "Chicago Orphans";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1903 && year <= curYear) {
-        teamName[teamCount] = "Chicago Cubs";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Chicago White Sox
-      if (year >= 1901 && year <= curYear) {
-        teamName[teamCount] = "Chicago White Sox";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Cincinnati Reds
-      if (year >= 1882 && year <= 1889) {
-        teamName[teamCount] = "Cincinnati Red Stockings";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1890 && year <= 1953) {
-        teamName[teamCount] = "Cincinnati Reds";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1954 && year <= 1958) {
-        teamName[teamCount] = "Cincinnati Redlegs";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1959 && year <= curYear) {
-        teamName[teamCount] = "Cincinnati Reds"
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Cleveland Indians
-      if (year === 1901) {
-        teamName[teamCount] = "Cleveland Blues";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year === 1902) {
-        teamName[teamCount] = "Cleveland Bronchos";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1903 && year <= 1914) {
-        teamName[teamCount] = "Cleveland Naps";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1915 && year <= curYear) {
-        teamName[teamCount] = "Cleveland Indians";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Colorado Rockies
-      if (year >= 1993 && year <= curYear) {
-        teamName[teamCount] = "Colorado Rockies";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Detroit Tigers
-      if (year >= 1901 && curYear) {
-        teamName[teamCount] = "Detroit Tigers";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Houston Astros
-      if (year >= 1962 && year <= 1964) {
-        teamName[teamCount] = "Houston Colt .45's";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1965 && year <= curYear) {
-        teamName[teamCount] = "Houston Astros";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Kansas City Royals
-      if (year >= 1969 && curYear) {
-        teamName[teamCount] = "Kansas City Royals";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Los Angeles Angels
-      if (year >= 1961 && year <= 1964) {
-        teamName[teamCount] = "Los Angeles Angels";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1965 && year <= 1996) {
-        teamName[teamCount] = "California Angels";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1997 && year <= 2004) {
-        teamName[teamCount] = "Anaheim Angels";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 2005 && year <= curYear) {
-        teamName[teamCount] = "Los Angeles Angels";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Los Angeles Dodgers
-      if (year === 1884) {
-        teamName[teamCount] = "Brooklyn Atlantics";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1885 && year <= 1887) {
-        teamName[teamCount] = "Brooklyn Grays";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1888 && year <= 1890) {
-        teamName[teamCount] = "Brooklyn Bridegrooms";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1891 && year <= 1895) {
-        teamName[teamCount] = "Brooklyn Grooms";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1896 && year <= 1898) {
-        teamName[teamCount] = "Brooklyn Bridegrooms";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1899 && year <= 1910) {
-        teamName[teamCount] = "Brooklyyn Superbas";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1911 && year <= 1912) {
-        teamName[teamCount] = "Brooklyn Dodgers";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year === 1913) {
-        teamName[teamCount] = "Brooklyn Superbas";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1914 && year <= 1931) {
-        teamName[teamCount] = "Brooklyn Robins";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1932 && year <= 1957) {
-        teamName[teamCount] = "Brooklyn Dodgers";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1958 && year <= curYear) {
-        teamName[teamCount] = "Los Angeles Dodgers";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Miami Marlins
-      if (year >= 1993 && year <= 2011) {
-        teamName[teamCount] = "Florida Marlins";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 2012 && year <= curYear) {
-        teamName[teamCount] = "Miami Marlins";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Milwaukee Brewers
-      if (year === 1969) {
-        teamName[teamCount] = "Seattle Pilots";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1970 && year <= curYear) {
-        teamName[teamCount] = "Milwaukee Brewers";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Minnesota Twins
-      if (year >= 1901 && year <= 1960) {
-        teamName[teamCount] = "Washington Senators";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1961 && year <= curYear) {
-        teamName[teamCount] = "Minnesota Twins";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // New York Mets
-      if (year >= 1962 && year <= curYear) {
-        teamName[teamCount] = "New York Mets";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // New York Yankees
-      if (year >= 1903 && year <= 1912) {
-        teamName[teamCount] = "New York Highlanders";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1913 && year <= curYear) {
-        teamName[teamCount] = "New York Yankees";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Oakland A's
-      if (year >= 1901 && year <= 1954) {
-        teamName[teamCount] = "Philadelphia Athletics";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1955 && year <= 1967) {
-        teamName[teamCount] = "Kansas City Athletics";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1968 && year <= curYear) {
-        teamName[teamCount] = "Oakland Athletics";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Philadelphia Phillies
-      if (year >= 1883 && year <= 1889) {
-        teamName[teamCount] = "Philadelphia Quakers";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1890 && year <= curYear) {
-        teamName[teamCount] = "Philadelphia Phillies";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Pittsburg Pirates
-      if (year >= 1882 && year <= 1890) {
-        teamName[teamCount] = "Pittsburgh Alleghenys";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1891 && year <= curYear) {
-        teamName[teamCount] = "Pittsburgh Pirates";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // San Diego Padres
-      if (year >= 1969 && year <= curYear) {
-        teamName[teamCount] = "San Diego Padres";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // San Francisco Giants
-      if (year >= 1883 && year <= 1884) {
-        teamName[teamCount] = "New York Gothams";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1885 && year <= 1957) {
-        teamName[teamCount] = "New York Giants";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1958 && year <= curYear) {
-        teamName[teamCount] = "San Francisco Giants";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Seattle Mariners
-
-      if (year >= 1977 && year <= curYear) {
-        teamName[teamCount] = "Seattle Mariners";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // St. Louis Cardinals
-      if (year === 1882) {
-        teamName[teamCount] = "St. Louis Brown Stockings";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1883 && year <= 1898) {
-        teamName[teamCount] = "St. Louis Browns";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year === 1899) {
-        teamName[teamCount] = "St. Louis Perfectos";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1900 && year <= curYear) {
-        teamName[teamCount] = "St. Louis Cardinals";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Tampa Bay Rays
-      if (year >= 1998 && year <= 2007) {
-        teamName[teamCount] = "Tampa Bay Devil Rays";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 2008 && year <= curYear) {
-        teamName[teamCount] = "Tampa Bay Rays";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Texas Rangers
-      if (year >= 1961 && year <= 1971) {
-        teamName[teamCount] = "Washington Senators";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      } else if (year >= 1972 && year <= curYear) {
-        teamName[teamCount] = "Texas Rangers";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Toronto Blue Jays
-      if (year >= 1977 && year <= curYear) {
-        teamName[teamCount] = "Toronto Blue Jays";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      // Washington Nationals
-      if(year >= 1969 && year <= 2004) {
-        teamName[teamCount] = "Montreal Expos";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-      else if (year >= 2005 && year <= curYear) {
-        teamName[teamCount] = "Washington Nationals";
-        teamAcronym[teamCount] = "ARI";
-        teamCount++;
-      }
-
-      for (var i = 0; i < teamCount; i++) {
-        options += "<option value='" + teamAcronym[i] + "'>" + teamName[i] + "</option>";
-      }
-      document.getElementById("team").innerHTML = options;
-
-    }
-
-    function populateDay(obj) {
+    function setDay() {
 
       let oldDate = "";
 
@@ -812,19 +398,38 @@
       let elt = document.getElementById("day");
 
       // parse complete date
-      for (let i = 0; i < obj.gameday.length; i++) {
-        // get date and rearrange to a readable format for the dropdown box
-        let newDate = getCompleteDate(obj.gameday[i].date);
+      if (curSeason === "Regular") {
+        for (let i = 0; i < myObj.gameday.length; i++) {
+          // get date and rearrange to a readable format for the dropdown box
+          let newDate = getCompleteDate(myObj.gameday[i].date);
 
-        if (newDate !== oldDate) {
-          let el = document.createElement("option");
-          el.textContent = newDate;
-          el.value = obj.gameday[i].date;
-          elt.appendChild(el);
+          if (newDate !== oldDate) {
+            let el = document.createElement("option");
+            el.textContent = newDate;
+            el.value = myObj.gameday[i].date;
+            elt.appendChild(el);
 
-          oldDate = newDate;
+            oldDate = newDate;
+          }
+
         }
+      } else if (curSeason === "All-Star") {
 
+        for (let i = 0; i < myObj.gameday.length; i++) {
+          // get date and rearrange to a readable format for the dropdown box
+          let newDate = myObj.gameday[i].date;
+
+          newDate = parseInt(newDate.substr(0, 4));
+
+          if (parseInt(newDate) === parseInt(curYear)) {
+            newDate = getCompleteDate(myObj.gameday[i].date);
+            let el = document.createElement("option");
+            el.textContent = newDate;
+            el.value = myObj.gameday[i].date;
+            elt.appendChild(el);
+          }
+
+        }
       }
     }
   </script>
@@ -844,19 +449,23 @@
   <section id="gamedate">
     <div>
       <p class="p-inline">Year</p>
-      <select id="year" onchange="loadGames(true)"></select>
+      <select id="year" onchange="updatedYear()"></select>
     </div>
     <div>
       <p class="p-inline">Day</p>
-      <select id="day" onchange="loadGames(false)"></select>
+      <select id="day" onchange="updatedDay()"></select>
     </div>
     <div>
       <p class="p-line">Season</p>
-      <select id="season" onchange="loadGames(true)"></select>
+      <select id="season" onchange="updatedSeason()">
+        <option value='Regular'>Regular</option>
+        <option value='Playoffs'>Playoffs</option>
+        <option value='All-Star'>All-Star</option>
+      </select>
     </div>
     <div>
       <p class="p-line">Team</p>
-      <select id="team" onchange="loadGames(true)"></select>
+      <select id="team" onchange="updatedTeam"></select>
     </div>
   </section>
 
@@ -876,22 +485,351 @@
   </footer>
 
   <script>
-    /* year */
-    var start = 1871;
-    var end = 2018;
-    var options = "";
-    for (var year = end; year >= start; year--) {
-      options += "<option value='" + year + "'>" + year + "</option>";
+    var myObj = {};
+    var curYear = 2018;
+    var curSeason = "Regular";
+    var curTeam = "All Teams";
+
+    setYears();
+    setTeamNames();
+    setMyObj();
+
+    function updatedYear() {
+
+      curYear = document.getElementById("year").value;
+
+      setTeamNames();
+      setMyObj();
+
     }
-    document.getElementById("year").innerHTML = options;
 
-  </script>
+    function sortSelect(selElem) {
+      var tmpAry = new Array();
+      for (var i = 0; i < selElem.options.length; i++) {
+        tmpAry[i] = new Array();
+        tmpAry[i][0] = selElem.options[i].text;
+        tmpAry[i][1] = selElem.options[i].value;
+      }
+      tmpAry.sort();
+      while (selElem.options.length > 0) {
+        selElem.options[0] = null;
+      }
+      for (var i = 0; i < tmpAry.length; i++) {
+        var op = new Option(tmpAry[i][0], tmpAry[i][1]);
+        selElem.options[i] = op;
+      }
+      return;
+    }
 
-  <script type="text/javascript">
-    /* auto-load most current year file and get dates
-    and fill out drop-down box */
-    var year = getSelectedText('year');
-    loadGames(true);
+    function clearYears() {
+      document.getElementById('year').options.length = 0;
+    }
+
+    function updatedDay() {
+
+    }
+
+    function updatedTeam() {
+
+    }
+
+    function updatedSeason() {
+      curSeason = document.getElementById("season").value;
+
+      clearYears();
+      setYears();
+      clearTeamDropDownBox();
+      setTeamNames();
+      setMyObj();
+
+    }
+
+    function setYears() {
+
+      let options = "";
+      let start = 0;
+
+      if (curSeason === "All-Star") {
+        start = 1933;
+      } else {
+        start = 1906;
+      }
+
+      for (let year = curYear; year >= start; year--) {
+        options += "<option value='" + year + "'>" + year + "</option>";
+      }
+
+      document.getElementById("year").innerHTML = options;
+    }
+
+    function setTeamNames() {
+
+      let teamName = document.getElementById("team");
+
+      let options = "<option value='ALL'>All Teams</option>";
+
+      if (curSeason !== "Regular") {
+        teamName.innerHTML = "<option value='All Teams'>All Teams</option>";
+        return;
+      }
+
+      // Arizona Diamondbacks
+
+      if (curYear >= 1998) {
+        options += "<option value='ARI'>Arizona Diamondbacks</option>";
+      }
+
+      // Atlanta Braves
+      if (year >= 1876 && curYear <= 1882) {
+        options += "<option value=''>Boston Red Stockings</option>";
+      } else if (curYear >= 1883 && curYear <= 1906) {
+        options += "<option value=''>Boston Beaneaters</option>";
+      } else if (curYear >= 1907 && curYear <= 1910) {
+        options += "<option value=''>Boston Doves</option>";
+      } else if (curYear === 1911) {
+        options += "<option value=''>Boston Rustlers</option>";
+      } else if (curYear >= 1912 && curYear <= 1935) {
+        options += "<option value=''>Boston Braves</option>";
+      } else if (curYear >= 1936 && curYear <= 1940) {
+        options += "<option value=''>Boston Bees</option>";
+      } else if (curYear >= 1941 && curYear <= 1952) {
+        options += "<option value=''>Boston Braves</option>";
+      } else if (curYear >= 1953 && curYear <= 1965) {
+        options += "<option value=''>Boston Doves</option>";
+      } else if (curYear >= 1966) {
+        options += "<option value=''>Boston Braves</option>";
+      }
+
+      // Baltimore Orioles
+      if (curYear === 1901) {
+        options += "<option value=''>Milwaukee Brewers</option>";
+      } else if (curYear >= 1902 && curYear <= 1953) {
+        options += "<option value=''>St. Louis Browns</option>";
+      } else if (curYear >= 1954) {
+        options += "<option value=''>Baltimore Orioles</option>";
+      }
+
+      // Boston Red Sox
+      if (curYear >= 1901 && curYear <= 1907) {
+        options += "<option value=''>Boston Americans</option>";
+      } else if (curYear >= 1908) {
+        options += "<option value=''>Boston Red Sox</option>";
+      }
+
+      // Chicago Cubs
+      if (curYear >= 1876 && curYear <= 1889) {
+        options += "<option value=''>Chicago White Stockings</option>";
+      } else if (curYear >= 1890 && curYear <= 1897) {
+        options += "<option value=''>Chicago Colts</option>";
+      } else if (curYear >= 1898 && curYear <= 1902) {
+        options += "<option value=''>Chicago Orphans</option>";
+      } else if (curYear >= 1903) {
+        options += "<option value=''>Chicago Cubs</option>";
+      }
+
+      // Chicago White Sox
+      if (curYear >= 1901) {
+        options += "<option value=''>Chicago White Sox</option>";
+      }
+
+      // Cincinnati Reds
+      if (curYear >= 1882 && curYear <= 1889) {
+        options += "<option value=''>Cincinnati Red Stockings</option>";
+      } else if (curYear >= 1890 && curYear <= 1953) {
+        options += "<option value=''>Cincinnati Reds</option>";
+      } else if (curYear >= 1954 && curYear <= 1958) {
+        options += "<option value=''>Cincinnati Redlegs</option>";
+      } else if (curYear >= 1959) {
+        options += "<option value=''>Cincinnati Reds</option>";
+      }
+
+      // Cleveland Indians
+      if (curYear === 1901) {
+        options += "<option value=''>Cleveland Blues</option>";
+      } else if (curYear === 1902) {
+        options += "<option value=''>Cleveland Bronchos</option>";
+      } else if (curYear >= 1903 && curYear <= 1914) {
+        options += "<option value=''>Cleveland Naps</option>";
+      } else if (curYear >= 1915) {
+        options += "<option value=''>Cleveland Indians</option>";
+      }
+
+      // Colorado Rockies
+      if (curYear >= 1993) {
+        options += "<option value=''>Colorado Rockies</option>";
+      }
+
+      // Detroit Tigers
+      if (curYear >= 1901) {
+        options += "<option value=''>Detroit Tigers</option>";
+      }
+
+      // Houston Astros
+      if (curYear >= 1962 && curYear <= 1964) {
+        options += "<option value=''>Houston Colt .45&apos;s</option>";
+      } else if (curYear >= 1965) {
+        options += "<option value=''>Houston Astros</option>";
+      }
+
+      // Kansas City Royals
+      if (curYear >= 1969) {
+        options += "<option value=''>Kansas City Royals</option>";
+      }
+
+      // Los Angeles Angels
+      if (curYear >= 1961 && curYear <= 1964) {
+        options += "<option value=''>Los Angeles Angels</option>";
+      } else if (curYear >= 1965 && curYear <= 1996) {
+        options += "<option value=''>California Angels</option>";
+      } else if (curYear >= 1997 && curYear <= 2004) {
+        options += "<option value=''>Anaheim Angels</option>";
+      } else if (curYear >= 2005) {
+        options += "<option value=''>Los Angeles Angels</option>";
+      }
+
+      // Los Angeles Dodgers
+      if (curYear === 1884) {
+        options += "<option value=''>Brooklyn Atlantics</option>";
+      } else if (curYear >= 1885 && curYear <= 1887) {
+        options += "<option value=''>Brooklyn Grays</option>";
+      } else if (curYear >= 1888 && curYear <= 1890) {
+        options += "<option value=''>Brooklyn Bridegrooms</option>";
+      } else if (curYear >= 1891 && curYear <= 1895) {
+        options += "<option value=''>Brooklyn Grooms</option>";
+      } else if (curYear >= 1896 && curYear <= 1898) {
+        options += "<option value=''>Brooklyn Bridegrooms</option>";
+      } else if (curYear >= 1899 && curYear <= 1910) {
+        options += "<option value=''>Brooklyn Superbas</option>";
+      } else if (curYear >= 1911 && curYear <= 1912) {
+        options += "<option value=''>Brooklyn Dodgers</option>";
+      } else if (curYear === 1913) {
+        options += "<option value=''>Brooklyn Superbas</option>";
+      } else if (curYear >= 1914 && curYear <= 1931) {
+        options += "<option value=''>Brooklyn Robins</option>";
+      } else if (curYear >= 1932 && curYear <= 1957) {
+        options += "<option value=''>Brooklyn Dodgers</option>";
+      } else if (curYear >= 1958) {
+        options += "<option value=''>Los Angeles Dodgers</option>";
+      }
+
+      // Miami Marlins
+      if (curYear >= 1993 && curYear <= 2011) {
+        options += "<option value=''>Florida Marlins</option>";
+      } else if (curYear >= 2012) {
+        options += "<option value=''>Miami Marlins</option>";
+      }
+
+      // Milwaukee Brewers
+      if (curYear === 1969) {
+        options += "<option value=''>Seattle Pilots</option>";
+      } else if (curYear >= 1970) {
+        options += "<option value=''>Milwaukee Brewers</option>";
+      }
+
+      // Minnesota Twins
+      if (curYear >= 1901 && curYear <= 1960) {
+        options += "<option value=''>Washington Senators</option>";
+      } else if (curYear >= 1961) {
+        options += "<option value=''>Minnesota Twins</option>";
+      }
+
+      // New York Mets
+      if (curYear >= 1962) {
+        options += "<option value=''>New York Mets</option>";
+      }
+
+      // New York Yankees
+      if (curYear >= 1903 && curYear <= 1912) {
+        options += "<option value=''>New York Highlanders</option>";
+      } else if (curYear >= 1913) {
+        options += "<option value=''>New York Yankees</option>";
+      }
+
+      // Oakland A's
+      if (curYear >= 1901 && curYear <= 1954) {
+        options += "<option value=''>Philadelphia Athletics</option>";
+      } else if (curYear >= 1955 && curYear <= 1967) {
+        options += "<option value=''>Kansas City Athletics</option>";
+      } else if (curYear >= 1968) {
+        options += "<option value=''>Oakland Athletics</option>";
+      }
+
+      // Philadelphia Phillies
+      if (curYear >= 1883 && curYear <= 1889) {
+        options += "<option value=''>Philadelphia Quakers</option>";
+      } else if (curYear >= 1890) {
+        options += "<option value=''>Philadelphia Phillies</option>";
+      }
+
+      // Pittsburg Pirates
+      if (curYear >= 1882 && curYear <= 1890) {
+        options += "<option value=''>Pittsburgh Alleghenys</option>";
+      } else if (curYear >= 1891) {
+        options += "<option value=''>Pittsburgh Pirates</option>";
+      }
+
+      // San Diego Padres
+      if (curYear >= 1969) {
+        options += "<option value=''>San Diego Padres</option>";
+      }
+
+      // San Francisco Giants
+      if (curYear >= 1883 && curYear <= 1884) {
+        options += "<option value=''>New York Gothams</option>";
+      } else if (curYear >= 1885 && curYear <= 1957) {
+        options += "<option value=''>New York Giants</option>";
+      } else if (curYear >= 1958) {
+        options += "<option value=''>San Francisco Giants</option>";
+      }
+
+      // Seattle Mariners
+
+      if (curYear >= 1977) {
+        options += "<option value=''>Seattle Mariners</option>";
+      }
+
+      // St. Louis Cardinals
+      if (curYear === 1882) {
+        options += "<option value=''>St. Louis Brown Stockings</option>";
+      } else if (curYear >= 1883 && curYear <= 1898) {
+        options += "<option value=''>St. Louis Browns</option>";
+      } else if (curYear === 1899) {
+        options += "<option value=''>St. Louis Perfectos</option>";
+      } else if (curYear >= 1900) {
+        options += "<option value=''>St. Louis Cardinals</option>";
+      }
+
+      // Tampa Bay Rays
+      if (curYear >= 1998 && curYear <= 2007) {
+        options += "<option value=''>Tampa Bay Devil Rays</option>";
+      } else if (curYear >= 2008) {
+        options += "<option value=''>Tampa Bay Rays</option>";
+      }
+
+      // Texas Rangers
+      if (curYear >= 1961 && curYear <= 1971) {
+        options += "<option value=''>Washington Senators</option>";
+      } else if (curYear >= 1972) {
+        options += "<option value=''>Texas Rangers</option>";
+      }
+
+      // Toronto Blue Jays
+      if (curYear >= 1977) {
+        options += "<option value=''>Toronto Blue Jays</option>";
+      }
+
+      // Washington Nationals
+      if (curYear >= 1969 && curYear <= 2004) {
+        options += "<option value=''>Montreal Expos</option>";
+      } else if (curYear >= 2005) {
+        options += "<option value=''>Washington Nationals</option>";
+      }
+
+      teamName.innerHTML = options;
+
+      sortSelect(teamName);
+
+    }
   </script>
 </body>
 
