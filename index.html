@@ -101,6 +101,9 @@
         let visTeam = getTeamName(myObj.gameday[gameLoop].visteam);
         let homeTeam = getTeamName(myObj.gameday[gameLoop].hometeam);
 
+        let visTeamColor = getTeamColor(visTeam);
+        let homeTeamColor = getTeamColor(homeTeam);
+
         // get line scores
         let visLineScore = myObj.gameday[gameLoop].vislinescore;
         let homeLineScore = myObj.gameday[gameLoop].homelinescore;
@@ -230,33 +233,27 @@
 
         let homeLeague = myObj.gameday[gameLoop].homeleague;
 
-        if (homeLeague.indexOf("AL") !== -1) {
+        if (homeLeague.indexOf("AL") !== -1 || curSeason == "All-Star") {
           addThisHtmlToAL +=
-            "<div class='game'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames'>" + visTeam +
-            "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
-              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
-              1] +
-            "</div><div>" + hLine[2] +
-            "</div><div>" + hLine[3] + "</div><div>" + hLine[4] +
-            "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" +
-            hErrors + "</div></div><div>Winning Pitcher: " + winningPitcherName + "</div><div>Losing Pitcher: " + losingPitcherName + "</div><div>Save: " + savingPitcherName +
-            "</div><div class='linkToSpreadsheet'><a href='scoresheet.html?vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
+            "<a href='scoresheet.html?vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
             "&vBatter7=" + vBatter[6] + "&vBatter8=" + vBatter[7] + "&vBatter9=" + vBatter[8] + "&hBatter1=" + hBatter[0] + "&hBatter2=" + hBatter[1] + "&hBatter3=" + hBatter[2] + "&hBatter4=" + hBatter[3] + "&hBatter5=" + hBatter[4] + "&hBatter6=" +
             hBatter[5] + "&hBatter7=" + hBatter[6] + "&hBatter8=" + hBatter[7] + "&hBatter9=" + hBatter[8] + "&vPitcher=" + vPitcher + "&hPitcher=" + hPitcher + "&vPos1=" + vPos[0] + "&vPos2=" + vPos[1] + "&vPos3=" + vPos[2] + "&vPos4=" + vPos[3] +
             "&vPos5=" + vPos[4] + "&vPos6=" + vPos[5] + "&vPos7=" + vPos[6] + "&vPos8=" + vPos[7] + "&vPos9=" + vPos[8] + "&hPos1=" + hPos[0] + "&hPos2=" + hPos[1] + "&hPos3=" + hPos[2] + "&hPos4=" + hPos[3] +
             "&hPos5=" + hPos[4] + "&hPos6=" + hPos[5] + "&hPos7=" + hPos[6] + "&hPos8=" + hPos[7] + "&hPos9=" + hPos[8] + "&visTeam=" + visTeam + "&homeTeam=" + homeTeam + "&vLine1=" + vLine[0] + "&vLine2=" + vLine[1] + "&vLine3=" + vLine[2] +
             "&vLine4=" + vLine[3] + "&vLine5=" + vLine[4] + "&vLine6=" + vLine[5] + "&vLine7=" + vLine[6] + "&vLine8=" + vLine[7] + "&vLine9=" + vLine[8] + "&vLine10=" + vLine[9] + "&vLine11=" + vLine[10] + "&vLine12=" + vLine[11] + "&hLine1=" +
             hLine[0] + "&hLine2=" + hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] + "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&hLine10=" + hLine[9] +
-            "&hLine11=" + hLine[10] + "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vHits=" + vHits + "&hHits=" + hHits + "&vErrors=" + vErrors + "&hErrors=" + hErrors + "' target='_blank'>View Scoresheet</a></div>";
-        } else {
-          addThisHtmlToNL +=
-            "<div class='game'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames'>" + visTeam +
+            "&hLine11=" + hLine[10] + "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vHits=" + vHits + "&hHits=" + hHits + "&vErrors=" + vErrors + "&hErrors=" + hErrors + "' target='_blank'><div class='game'><div class='card'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames'>" + visTeam +
             "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
               8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
               1] +
-            "</div><div>" + hLine[2] + "</div><div>" + hLine[3] + "</div><div>" + hLine[4] + "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" +
-            myObj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" + hErrors + "</div></div><div>Winning Pitcher: " + winningPitcherName + "</div><div>Losing Pitcher: " + losingPitcherName + "</div><div>Save: " + savingPitcherName +
-            "</div><div class='linkToSpreadsheet'><a href='scoresheet.html?vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
+            "</div><div>" + hLine[2] +
+            "</div><div>" + hLine[3] + "</div><div>" + hLine[4] +
+            "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" +
+            hErrors + "</div></div><div class='pitcher-details'><strong>Winning Pitcher: </strong>" + winningPitcherName + "  <strong>Losing Pitcher: </strong>" + losingPitcherName + "  <strong>Save: </strong>" + savingPitcherName +
+            "</div></div></a>";
+        } else {
+          addThisHtmlToNL +=
+            "<a href='scoresheet.html?vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
             "&vBatter7=" + vBatter[6] + "&vBatter8=" + vBatter[7] + "&vBatter9=" + vBatter[8] + "&hBatter1=" + hBatter[0] + "&hBatter2=" + hBatter[1] + "&hBatter3=" + hBatter[2] + "&hBatter4=" + hBatter[3] + "&hBatter5=" + hBatter[4] + "&hBatter6=" +
             hBatter[5] + "&hBatter7=" + hBatter[6] + "&hBatter8=" + hBatter[7] + "&hBatter9=" + hBatter[8] + "&vPitcher=" + vPitcher + "&hPitcher=" + hPitcher + "&vPos1=" + vPos[0] + "&vPos2=" + vPos[1] + "&vPos3=" + vPos[2] + "&vPos4=" + vPos[3] +
             "&vPos5=" + vPos[4] + "&vPos6=" + vPos[5] + "&vPos7=" + vPos[6] + "&vPos8=" + vPos[7] + "&vPos9=" + vPos[8] + "&hPos1=" + hPos[0] + "&hPos2=" + hPos[1] + "&hPos3=" + hPos[2] + "&hPos4=" + hPos[3] +
@@ -264,7 +261,14 @@
             "&vLine4=" + vLine[3] + "&vLine5=" + vLine[4] + "&vLine6=" + vLine[5] + "&vLine7=" + vLine[6] + "&vLine8=" + vLine[7] + "&vLine9=" + vLine[8] + "&hLine1=" + hLine[0] + "&hLine2=" + hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] +
             "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&vLine10=" + vLine[9] + "&vLine11=" + vLine[10] + "&vLine12=" + vLine[11] + "&hLine1=" + hLine[0] + "&hLine2=" +
             hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] + "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&hLine10=" + hLine[9] + "&hLine11=" + hLine[10] +
-            "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vErrors=" + vErrors + "&hErrors=" + hErrors + "&vHits=" + vHits + "&hHits=" + hHits + "' target='_blank'>View Scoresheet</a></div>";
+            "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vErrors=" + vErrors + "&hErrors=" + hErrors + "&vHits=" + vHits + "&hHits=" + hHits + "' target='_blank'><div class='game'><div class='card'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames'>" + visTeam +
+            "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
+              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
+              1] +
+            "</div><div>" + hLine[2] + "</div><div>" + hLine[3] + "</div><div>" + hLine[4] + "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" +
+            myObj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" + hErrors + "</div></div><div class='pitcher-details'><strong>Winning Pitcher: </strong>" + winningPitcherName + "  <strong>Losing Pitcher: </strong>" + losingPitcherName + "  <strong>Save: </strong>" +
+            savingPitcherName +
+            "</div></div></a>";
         }
 
         document.getElementById('algames').innerHTML = addThisHtmlToAL;
@@ -299,12 +303,19 @@
       }
     }
 
+    function getTeamColor(teamName) {
+      switch(teamName) {
+        case "Arizona":
+          return;
+      }
+    }
+
     function getTeamName(name) {
       switch (name) {
         case "NLS":
-          return "National League All-Stars";
+          return "NL All-Stars";
         case "ALS":
-          return "American League All-Stars";
+          return "AL All-Stars";
         case "ARI":
           return "Arizona";
         case "ATL":
@@ -413,6 +424,8 @@
           }
 
         }
+
+        document.getElementById("nlgames").style.display = "initial";
       } else if (curSeason === "All-Star") {
 
         for (let i = 0; i < myObj.gameday.length; i++) {
@@ -430,6 +443,9 @@
           }
 
         }
+
+        // hide the nlgames element
+        document.getElementById("nlgames").style.display = "none";
       }
     }
   </script>
@@ -456,7 +472,7 @@
       <select id="day" onchange="updatedDay()"></select>
     </div>
     <div>
-      <p class="p-line">Season</p>
+      Season
       <select id="season" onchange="updatedSeason()">
         <option value='Regular'>Regular</option>
         <option value='Playoffs'>Playoffs</option>
@@ -464,7 +480,7 @@
       </select>
     </div>
     <div>
-      <p class="p-line">Team</p>
+      Team
       <select id="team" onchange="updatedTeam"></select>
     </div>
   </section>
