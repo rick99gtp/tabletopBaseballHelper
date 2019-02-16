@@ -41,17 +41,53 @@
 
       if (curSeason === "Regular") {
         // Regular Season Games
-        switch (parseInt(curYear)) {
+        switch (parseInt(newYear)) {
           case 2018:
-            return "https://gist.githubusercontent.com/rick99gtp/719250fc21468691765c6ad07eeda69c/raw/d4db77ffe4d0f4de5a9598b9f9362aecfc44af9c/gl2018.txt";
+            return "https://gist.githubusercontent.com/rick99gtp/bd4dee9b96a4404cafd091b3d84d9c45/raw/814b3e034a546917a43e1c5cade8df19294bed66/gl2018.txt";
           case 2017:
-            return "https://gist.githubusercontent.com/rick99gtp/e8d8f3e3e7b87bbde2e348eee1688d7c/raw/3bc60c9cf487fb4d073dcac6a4c2f2471897f14e/gl2017.txt";
+            return "https://gist.githubusercontent.com/rick99gtp/6a55f21b2d5afb14eefa56160f361e8b/raw/a6ab8ae368b9f91e03380bc59e1fceae212b7057/gl2017.txt";
           case 2016:
-            return "https://gist.githubusercontent.com/rick99gtp/16bf2bcf0892a20ff61786a87bf1c12f/raw/6526d593db7ea8b82aa09f255a84987c8faba2c7/gistfile1.txt";
+            return "https://gist.githubusercontent.com/rick99gtp/85c03eb2a3771d9e0eb7675a630e56fc/raw/999237d241a9f1da1f6589e7f1ac9b398758f766/gl2016.txt";
+          case 2015:
+            return "https://gist.githubusercontent.com/rick99gtp/3a924b52f8637c469419e80b37c75554/raw/d79ed3993c70785bdfaf2c46b3dc11afa71d858a/gl2015.txt";
+          case 2014:
+            return "https://gist.githubusercontent.com/rick99gtp/36a45c986e9c4100c9a306430f8cf6b7/raw/737a8bbe0bd340382ef3842ce17fed42f93f7fd9/gl2014.txt";
+          case 2013:
+            return "https://gist.githubusercontent.com/rick99gtp/2476887ba54cb315ffecf1a59a11d02c/raw/6d2d465ed5435ffb93ddf48988a7ea8fd905d04d/gl2013.txt";
+          case 2012:
+            return "https://gist.githubusercontent.com/rick99gtp/9ffea3e8fd2cf0e46f23d6e0c7e9b4a4/raw/61426351f895c723bcf7570b20b44c2423edf21b/gl2012.txt";
+          case 2011:
+            return "https://gist.githubusercontent.com/rick99gtp/3811036c5ec3f7fb63635a8a65811550/raw/f1fb396383a6e4fd6f77c6ac83fc95cc7de56c99/gl2011.txt";
+          case 2010:
+            return "https://gist.githubusercontent.com/rick99gtp/6d11d549cde5629fb151c908c641772b/raw/1b0c841cf33de8c1117c01d88d0e623b70282485/gl2010.txt";
+          case 2009:
+            return "https://gist.githubusercontent.com/rick99gtp/7ff306a6874e3b08599222df13e22ccf/raw/fa7b7e4e29d5c46941e29701a97c55fbb90977f6/gl2009.txt";
+          case 2008:
+            return "https://gist.githubusercontent.com/rick99gtp/f05f9425dbe31d613b842860a9fee40e/raw/b1549b608c7db0e8cbcab21d6f22e3a55ad2048b/gl2008.txt";
+          case 2007:
+            return "https://gist.githubusercontent.com/rick99gtp/800f374a34bf0dd6eba2bbf726b74334/raw/a77f405335cf3ab8e343d09b7a6b9de5ea15129d/gl2007.txt";
+          case 2006:
+            return "https://gist.githubusercontent.com/rick99gtp/be36acac66af4514fa0cb0b1826424e1/raw/f8a305a589e511c8fc5df4fadfd8d5636780f4fc/gl2006.txt";
+          case 2005:
+            return "https://gist.githubusercontent.com/rick99gtp/acfa45c2fe75947c2b57213b13041589/raw/1e767226d4d859518d859c8ada5e1b87c5807e00/gl2005.txt";
+          case 2004:
+            return "https://gist.githubusercontent.com/rick99gtp/84e081aec74a190d39094101cf4b5a77/raw/d8ae17773a7c95d8df816aea0683f974c8eb7e60/gl2004.txt";
+          case 2003:
+            return "https://gist.githubusercontent.com/rick99gtp/bb7d507e0385d6b8e762270b41de0fac/raw/046d7485b1c38d95bc44298cdffcea08d4833364/gl2003.txt";
+          case 2002:
+            return "https://gist.githubusercontent.com/rick99gtp/29f872f9704aee9addb207bad0b16b5e/raw/977f15f3b00c403f483be928dbb081ad4a757e3b/gl2002.txt";
+          case 2001:
+            return "https://gist.githubusercontent.com/rick99gtp/f27b3ed6112403de5246336c290a18d1/raw/ac5f9b0606d6cbb6d0630a64f1182b3b5b0e9909/gl2001.txt";
+          case 2000:
+            return "https://gist.githubusercontent.com/rick99gtp/334922d1e3730119028814d3e09374ed/raw/d78b18073fd68e2d7c29a84e1a841787dc0f7a19/gl2000.txt";
+          case 1999:
+            return "https://gist.githubusercontent.com/rick99gtp/2dbd3e87339546c518eaeaa3de123b3f/raw/755d5e5c232881a153311aab41574f048da45e23/gl1999.txt";
+          case 1998:
+            return "https://gist.githubusercontent.com/rick99gtp/5965870578c786292064025de49f0910/raw/63b6d1222ef0ecaaeefd586fa15c98d4d40cb251/gl1998.txt";
         }
       } else if (curSeason === "Playoffs") {
         // Playoff games
-        switch (parseInt(curYear)) {
+        switch (parseInt(newYear)) {
           case 2018:
             return;
           case 2017:
@@ -61,13 +97,15 @@
         }
       } else {
         // All-Star Games
-        return "https://gist.githubusercontent.com/rick99gtp/433cd878e5b866dab5f8e612c5c22941/raw/9f4776f2a95264d14053be1112fe09120afb4187/asgl";
+        return "https://gist.githubusercontent.com/rick99gtp/3122f12d2dba2a5ae30286b093e25f48/raw/b6cbfeb5d4014bf25a439d9061cf3bc83c0b1cf8/asgl";
       }
     }
 
     function getGames() {
       // look through obj and start pulling information
       let thisDayValue = document.getElementById("day").value;
+      let thisDate = getCompleteDate(thisDayValue);
+      let year = document.getElementById("year").value;
 
       let startDaySet = false;
       let startDay = 0;
@@ -101,8 +139,11 @@
         let visTeam = getTeamName(myObj.gameday[gameLoop].visteam);
         let homeTeam = getTeamName(myObj.gameday[gameLoop].hometeam);
 
-        let visTeamColor = getTeamColor(visTeam);
-        let homeTeamColor = getTeamColor(homeTeam);
+        let visTeamColor = getTeamColor(myObj.gameday[gameLoop].visteam);
+        let homeTeamColor = getTeamColor(myObj.gameday[gameLoop].hometeam);
+
+        let visTeamFontColor = getTeamFontColor(myObj.gameday[gameLoop].visteam);
+        let homeTeamFontColor = getTeamFontColor(myObj.gameday[gameLoop].hometeam);
 
         // get line scores
         let visLineScore = myObj.gameday[gameLoop].vislinescore;
@@ -140,13 +181,13 @@
         for (let i = 0; i < 13; i++) {
           // if next character in linescore is a '(' then a team has scored more than one digit of runs
           // need to get two characters
-          if (visLineScore.substr(vCount, 1) !== "(") {
+          if (visLineScore.substring(vCount, vCount + 1) !== "(") {
             // get one character
-            vLine[i] = visLineScore.substr(vCount, 1);
+            vLine[i] = visLineScore.substring(vCount, vCount + 1);
             vCount += vLine[i].length;
           } else {
             // get two characters
-            vLine[i] = visLineScore.substr(vCount + 1, 2);
+            vLine[i] = visLineScore.substring(vCount + 1, vCount + 3);
             vCount += 4;
           }
 
@@ -160,13 +201,13 @@
         for (let i = 0; i < 13; i++) {
           // if next character in linescore is a '(' then a team has scored more than one digit of runs
           // need to get two characters
-          if (homeLineScore.substr(hCount, 1) !== "(") {
+          if (homeLineScore.substring(hCount, hCount + 1) !== "(") {
             // get one character
-            hLine[i] = homeLineScore.substr(hCount, 1);
+            hLine[i] = homeLineScore.substring(hCount, hCount + 1);
             hCount += hLine[i].length;
           } else {
             // get two characters
-            hLine[i] = homeLineScore.substr(hCount + 1, 2);
+            hLine[i] = homeLineScore.substring(hCount + 1, hCount + 3);
             hCount += 4;
           }
 
@@ -222,6 +263,11 @@
         hPos[7] = getPos(myObj.gameday[gameLoop].homeplayerposition8);
         hPos[8] = getPos(myObj.gameday[gameLoop].homeplayerposition9);
 
+        for(let x=0; x < 9; x++) {
+          vBatter[x] = vBatter[x].replace("'","%27");
+          hBatter[x] = hBatter[x].replace("'","%27");
+        }
+
         hPitcher = myObj.gameday[gameLoop].homepitchername;
 
         // get extra inning runs, if any
@@ -235,16 +281,18 @@
 
         if (homeLeague.indexOf("AL") !== -1 || curSeason == "All-Star") {
           addThisHtmlToAL +=
-            "<a href='scoresheet.html?vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
+            "<a href='scoresheet.html?date=" + thisDate + "&year=" + year + "&vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
             "&vBatter7=" + vBatter[6] + "&vBatter8=" + vBatter[7] + "&vBatter9=" + vBatter[8] + "&hBatter1=" + hBatter[0] + "&hBatter2=" + hBatter[1] + "&hBatter3=" + hBatter[2] + "&hBatter4=" + hBatter[3] + "&hBatter5=" + hBatter[4] + "&hBatter6=" +
             hBatter[5] + "&hBatter7=" + hBatter[6] + "&hBatter8=" + hBatter[7] + "&hBatter9=" + hBatter[8] + "&vPitcher=" + vPitcher + "&hPitcher=" + hPitcher + "&vPos1=" + vPos[0] + "&vPos2=" + vPos[1] + "&vPos3=" + vPos[2] + "&vPos4=" + vPos[3] +
             "&vPos5=" + vPos[4] + "&vPos6=" + vPos[5] + "&vPos7=" + vPos[6] + "&vPos8=" + vPos[7] + "&vPos9=" + vPos[8] + "&hPos1=" + hPos[0] + "&hPos2=" + hPos[1] + "&hPos3=" + hPos[2] + "&hPos4=" + hPos[3] +
             "&hPos5=" + hPos[4] + "&hPos6=" + hPos[5] + "&hPos7=" + hPos[6] + "&hPos8=" + hPos[7] + "&hPos9=" + hPos[8] + "&visTeam=" + visTeam + "&homeTeam=" + homeTeam + "&vLine1=" + vLine[0] + "&vLine2=" + vLine[1] + "&vLine3=" + vLine[2] +
             "&vLine4=" + vLine[3] + "&vLine5=" + vLine[4] + "&vLine6=" + vLine[5] + "&vLine7=" + vLine[6] + "&vLine8=" + vLine[7] + "&vLine9=" + vLine[8] + "&vLine10=" + vLine[9] + "&vLine11=" + vLine[10] + "&vLine12=" + vLine[11] + "&hLine1=" +
             hLine[0] + "&hLine2=" + hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] + "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&hLine10=" + hLine[9] +
-            "&hLine11=" + hLine[10] + "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vHits=" + vHits + "&hHits=" + hHits + "&vErrors=" + vErrors + "&hErrors=" + hErrors + "' target='_blank'><div class='game'><div class='card'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames'>" + visTeam +
+            "&hLine11=" + hLine[10] + "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vHits=" + vHits + "&hHits=" + hHits + "&vErrors=" + vErrors + "&hErrors=" + hErrors +
+            "' target='_blank'><div class='game'><div class='card'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames name-shadow' style='color:" + visTeamFontColor + "; background-image: radial-gradient(farthest-corner at 40px 40px," + visTeamColor + " 50%, transparent 100%);" + ";'>" +
+            visTeam +
             "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
-              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
+              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames name-shadow' style='color:" + homeTeamFontColor + "; background-image: radial-gradient(farthest-corner at 40px 40px," + homeTeamColor + " 50%, transparent 100%);" + ";'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
               1] +
             "</div><div>" + hLine[2] +
             "</div><div>" + hLine[3] + "</div><div>" + hLine[4] +
@@ -253,7 +301,7 @@
             "</div></div></a>";
         } else {
           addThisHtmlToNL +=
-            "<a href='scoresheet.html?vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
+            "<a href='scoresheet.html?date=" + thisDate + "&year=" + year + "&vBatter1=" + vBatter[0] + "&vBatter2=" + vBatter[1] + "&vBatter3=" + vBatter[2] + "&vBatter4=" + vBatter[3] + "&vBatter5=" + vBatter[4] + "&vBatter6=" + vBatter[5] +
             "&vBatter7=" + vBatter[6] + "&vBatter8=" + vBatter[7] + "&vBatter9=" + vBatter[8] + "&hBatter1=" + hBatter[0] + "&hBatter2=" + hBatter[1] + "&hBatter3=" + hBatter[2] + "&hBatter4=" + hBatter[3] + "&hBatter5=" + hBatter[4] + "&hBatter6=" +
             hBatter[5] + "&hBatter7=" + hBatter[6] + "&hBatter8=" + hBatter[7] + "&hBatter9=" + hBatter[8] + "&vPitcher=" + vPitcher + "&hPitcher=" + hPitcher + "&vPos1=" + vPos[0] + "&vPos2=" + vPos[1] + "&vPos3=" + vPos[2] + "&vPos4=" + vPos[3] +
             "&vPos5=" + vPos[4] + "&vPos6=" + vPos[5] + "&vPos7=" + vPos[6] + "&vPos8=" + vPos[7] + "&vPos9=" + vPos[8] + "&hPos1=" + hPos[0] + "&hPos2=" + hPos[1] + "&hPos3=" + hPos[2] + "&hPos4=" + hPos[3] +
@@ -261,52 +309,155 @@
             "&vLine4=" + vLine[3] + "&vLine5=" + vLine[4] + "&vLine6=" + vLine[5] + "&vLine7=" + vLine[6] + "&vLine8=" + vLine[7] + "&vLine9=" + vLine[8] + "&hLine1=" + hLine[0] + "&hLine2=" + hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] +
             "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&vLine10=" + vLine[9] + "&vLine11=" + vLine[10] + "&vLine12=" + vLine[11] + "&hLine1=" + hLine[0] + "&hLine2=" +
             hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] + "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&hLine10=" + hLine[9] + "&hLine11=" + hLine[10] +
-            "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vErrors=" + vErrors + "&hErrors=" + hErrors + "&vHits=" + vHits + "&hHits=" + hHits + "' target='_blank'><div class='game'><div class='card'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames'>" + visTeam +
+            "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vErrors=" + vErrors + "&hErrors=" + hErrors + "&vHits=" + vHits + "&hHits=" + hHits +
+            "' target='_blank'><div class='game'><div class='card'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames name-shadow' style='color:" + visTeamFontColor + "; background-image: radial-gradient(farthest-corner at 40px 40px," + visTeamColor + " 50%, transparent 100%);" + ";'>" +
+            visTeam +
             "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
-              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
+              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames name-shadow' style='color:" + homeTeamFontColor + "; background-image: radial-gradient(farthest-corner at 40px 40px," + homeTeamColor + " 50%, transparent 100%);" + ";'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
               1] +
             "</div><div>" + hLine[2] + "</div><div>" + hLine[3] + "</div><div>" + hLine[4] + "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" +
-            myObj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" + hErrors + "</div></div><div class='pitcher-details'><strong>Winning Pitcher: </strong>" + winningPitcherName + "  <strong>Losing Pitcher: </strong>" + losingPitcherName + "  <strong>Save: </strong>" +
+            myObj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" + hErrors + "</div></div><div class='pitcher-details'><strong>Winning Pitcher: </strong>" + winningPitcherName + "  <strong>Losing Pitcher: </strong>" +
+            losingPitcherName + "  <strong>Save: </strong>" +
             savingPitcherName +
             "</div></div></a>";
         }
 
-        document.getElementById('algames').innerHTML = addThisHtmlToAL;
-        document.getElementById('nlgames').innerHTML = addThisHtmlToNL;
+        if(curSeason === "Regular") {
+          document.getElementById('algames').innerHTML = "<div id='al'>American League</div>" + addThisHtmlToAL;
+          document.getElementById('nlgames').innerHTML = "<div id='nl'>National League</div>" + addThisHtmlToNL;
+        }
+        else {
+          document.getElementById('algames').innerHTML = "<div id='al'></div>" + addThisHtmlToAL;
+          document.getElementById('nlgames').innerHTML = "<div id='nl'>National League</div>" + addThisHtmlToNL;
+        }
 
       }
 
     }
 
     function getPos(pos) {
+      let thisPos = ["","P","C","1B","2B","3B","SS","LF","CF","RF","DH"];
+
+      return thisPos[parseInt(pos)];
+/*
       switch (pos) {
-        case 1:
+        case "1":
           return "P";
-        case 2:
+        case "2":
           return "C";
-        case 3:
+        case "3":
           return "1B";
-        case 4:
+        case "4":
           return "2B";
-        case 5:
+        case "5":
           return "3B";
-        case 6:
+        case "6":
           return "SS";
-        case 7:
+        case "7":
           return "LF";
-        case 8:
+        case "8":
           return "CF";
-        case 9:
+        case "9":
           return "RF";
-        case 10:
+        case "10":
           return "DH";
+      }
+      */
+    }
+
+    function getTeamFontColor(teamName) {
+      switch (teamName) {
+        case "FLO":
+        case "MIA":
+          return "#000000";
+        case "NYA":
+          return "#000000";
+        case "NYN":
+          return "#002D72";
+        case "OAK":
+          return "#EFB21E";
+        case "PIT":
+          return "#000000";
+        case "SFN":
+          return "#000000";
+        default:
+          return "#FFFFFF";
       }
     }
 
     function getTeamColor(teamName) {
-      switch(teamName) {
-        case "Arizona":
-          return;
+      switch (teamName) {
+        case "NLS":
+          return "#005A9C";
+        case "ALS":
+          return "#BA0021";
+        case "ANA":
+        case "LAA":
+          return "#BA0021";
+        case "ARI":
+          return "#A71930";
+        case "ATL":
+          return "#CE1141";
+        case "BAL":
+          return "#DF4601";
+        case "BOS":
+          return "#BD3039";
+        case "CHA":
+          return "#000000";
+        case "CHN":
+          return "#CC3433";
+        case "CIN":
+          return "#C6011F";
+        case "CLE":
+          return "#E31937";
+        case "COL":
+          return "#333366";
+        case "DET":
+          return "#0C2C56";
+        case "FLO":
+          return "#FF6600";
+        case "HOU":
+          return "#EB6E1F";
+        case "KCA":
+          return "#004687";
+        case "LAN":
+          return "#005A9C";
+        case "MIA":
+          return "#FF6600";
+        case "MIL":
+          return "#0A2351";
+        case "MIN":
+          return "#002B5C";
+        case "MON":
+          return "#003087";
+        case "NYA":
+          return "#ffffff";
+        case "NYN":
+          return "#FF5910";
+        case "OAK":
+          return "#003831";
+        case "PHI":
+          return "#284898";
+        case "PIT":
+          return "#FDB827";
+        case "SDN":
+          return "#002D62";
+        case "SEA":
+          return "#005C5C";
+        case "SFN":
+          return "#FD5A1E";
+        case "SLN":
+          return "#C41E3A";
+        case "TBA":
+          return "#092C5C";
+        case "TEX":
+          return "#C0111F";
+        case "TOR":
+          return "#134A8E";
+        case "WAS":
+          return "#AB0003";
+        default:
+          return "Teamname?";
       }
     }
 
@@ -316,6 +467,13 @@
           return "NL All-Stars";
         case "ALS":
           return "AL All-Stars";
+        case "ANA":
+          if(curYear >= 2005) {
+            return "Los Angeles (A)";
+          }
+          else {
+            return "Anaheim";
+          }
         case "ARI":
           return "Arizona";
         case "ATL":
@@ -336,12 +494,13 @@
           return "Colorado";
         case "DET":
           return "Detroit";
+        case "FLO":
+          return "Florida";
         case "HOU":
           return "Houston";
         case "KCA":
           return "Kansas City";
         case "LAA":
-        case "ANA":
           return "Los Angeles (A)";
         case "LAN":
           return "Los Angeles (N)";
@@ -351,6 +510,8 @@
           return "Milwaukee";
         case "MIN":
           return "Minnesota";
+        case "MON":
+          return "Montreal";
         case "NYA":
           return "New York (A)";
         case "NYN":
@@ -393,9 +554,9 @@
     function getCompleteDate(oldDate) {
       let newMonths = ["", "", "March", "April", "May", "June", "July", "August", "September", "October"];
 
-      let newMonth = parseInt(oldDate.substr(4, 2));
-      let newDay = oldDate.substr(6, 2);
-      let newYear = oldDate.substr(0, 4);
+      let newMonth = parseInt(oldDate.substring(4, 6));
+      let newDay = oldDate.substring(6, 8);
+      let newYear = oldDate.substring(0, 4);
 
       return newMonths[newMonth - 1] + " " + newDay;
     }
@@ -406,7 +567,7 @@
 
       clearDayDropDownBox();
 
-      let elt = document.getElementById("day");
+      let elt = document.getElementById('day');
 
       // parse complete date
       if (curSeason === "Regular") {
@@ -415,7 +576,7 @@
           let newDate = getCompleteDate(myObj.gameday[i].date);
 
           if (newDate !== oldDate) {
-            let el = document.createElement("option");
+            let el = document.createElement('option');
             el.textContent = newDate;
             el.value = myObj.gameday[i].date;
             elt.appendChild(el);
@@ -432,9 +593,9 @@
           // get date and rearrange to a readable format for the dropdown box
           let newDate = myObj.gameday[i].date;
 
-          newDate = parseInt(newDate.substr(0, 4));
+          newDate = parseInt(newDate.substring(0, 4));
 
-          if (parseInt(newDate) === parseInt(curYear)) {
+          if (parseInt(newDate) === parseInt(newYear)) {
             newDate = getCompleteDate(myObj.gameday[i].date);
             let el = document.createElement("option");
             el.textContent = newDate;
@@ -472,7 +633,7 @@
       <select id="day" onchange="updatedDay()"></select>
     </div>
     <div>
-      Season
+      <p class="p-inline">Season</p>
       <select id="season" onchange="updatedSeason()">
         <option value='Regular'>Regular</option>
         <option value='Playoffs'>Playoffs</option>
@@ -480,8 +641,12 @@
       </select>
     </div>
     <div>
-      Team
+      <p class="p-inline">Team</p>
       <select id="team" onchange="updatedTeam"></select>
+    </div>
+    <div>
+      <button id="prev-button" class="button2" style="vertical-align:middle" onclick="changeDay(0)"><span>Prev</span></button>
+      <button id="next-button" class="button" style="vertical-align:middle" onclick="changeDay(1)"><span>Next</span></button>
     </div>
   </section>
 
@@ -505,6 +670,7 @@
     var curYear = 2018;
     var curSeason = "Regular";
     var curTeam = "All Teams";
+    var newYear = curYear;
 
     setYears();
     setTeamNames();
@@ -512,11 +678,35 @@
 
     function updatedYear() {
 
-      curYear = document.getElementById("year").value;
+      newYear = document.getElementById("year").value;
 
       setTeamNames();
       setMyObj();
 
+    }
+
+    function setSelectedIndex(s, i) {
+      s.options[i-1].selected = true;
+      return;
+    }
+
+    function changeDay(num) {
+      if(num === 0) {
+        let x = document.getElementById("day").selectedIndex;
+
+        if(x > 0) {
+          setSelectedIndex(document.getElementById("day"),x);
+          getGames();
+        }
+      }
+      else {
+        let x = document.getElementById("day").selectedIndex;
+
+        if(x < document.getElementById("day").length-1) {
+          setSelectedIndex(document.getElementById("day"),x + 2);
+          getGames();
+        }
+      }
     }
 
     function sortSelect(selElem) {
@@ -542,7 +732,7 @@
     }
 
     function updatedDay() {
-
+      getGames();
     }
 
     function updatedTeam() {
@@ -551,9 +741,13 @@
 
     function updatedSeason() {
       curSeason = document.getElementById("season").value;
+      let tempYear = document.getElementById('year');
 
       clearYears();
       setYears();
+
+      selectItemByValue(tempYear, newYear);
+
       clearTeamDropDownBox();
       setTeamNames();
       setMyObj();
@@ -567,6 +761,7 @@
 
       if (curSeason === "All-Star") {
         start = 1933;
+
       } else {
         start = 1906;
       }
@@ -576,6 +771,22 @@
       }
 
       document.getElementById("year").innerHTML = options;
+
+      if (newYear < start) {
+        newYear = start;
+        let number = document.getElementById('year');
+        selectItemByValue(number, newYear);
+      }
+
+    }
+
+    // Choose option in Select Element
+    function selectItemByValue(elt, value) {
+
+      for (var i = 0; i < elt.options.length; i++) {
+        if (elt.options[i].value == value)
+          elt.selectedIndex = i;
+      }
     }
 
     function setTeamNames() {
@@ -591,253 +802,253 @@
 
       // Arizona Diamondbacks
 
-      if (curYear >= 1998) {
+      if (newYear >= 1998) {
         options += "<option value='ARI'>Arizona Diamondbacks</option>";
       }
 
       // Atlanta Braves
-      if (year >= 1876 && curYear <= 1882) {
+      if (year >= 1876 && newYear <= 1882) {
         options += "<option value=''>Boston Red Stockings</option>";
-      } else if (curYear >= 1883 && curYear <= 1906) {
+      } else if (newYear >= 1883 && newYear <= 1906) {
         options += "<option value=''>Boston Beaneaters</option>";
-      } else if (curYear >= 1907 && curYear <= 1910) {
+      } else if (newYear >= 1907 && newYear <= 1910) {
         options += "<option value=''>Boston Doves</option>";
-      } else if (curYear === 1911) {
+      } else if (newYear === 1911) {
         options += "<option value=''>Boston Rustlers</option>";
-      } else if (curYear >= 1912 && curYear <= 1935) {
+      } else if (newYear >= 1912 && newYear <= 1935) {
         options += "<option value=''>Boston Braves</option>";
-      } else if (curYear >= 1936 && curYear <= 1940) {
+      } else if (newYear >= 1936 && newYear <= 1940) {
         options += "<option value=''>Boston Bees</option>";
-      } else if (curYear >= 1941 && curYear <= 1952) {
+      } else if (newYear >= 1941 && newYear <= 1952) {
         options += "<option value=''>Boston Braves</option>";
-      } else if (curYear >= 1953 && curYear <= 1965) {
+      } else if (newYear >= 1953 && newYear <= 1965) {
         options += "<option value=''>Boston Doves</option>";
-      } else if (curYear >= 1966) {
+      } else if (newYear >= 1966) {
         options += "<option value=''>Boston Braves</option>";
       }
 
       // Baltimore Orioles
-      if (curYear === 1901) {
+      if (newYear === 1901) {
         options += "<option value=''>Milwaukee Brewers</option>";
-      } else if (curYear >= 1902 && curYear <= 1953) {
+      } else if (newYear >= 1902 && newYear <= 1953) {
         options += "<option value=''>St. Louis Browns</option>";
-      } else if (curYear >= 1954) {
+      } else if (newYear >= 1954) {
         options += "<option value=''>Baltimore Orioles</option>";
       }
 
       // Boston Red Sox
-      if (curYear >= 1901 && curYear <= 1907) {
+      if (newYear >= 1901 && newYear <= 1907) {
         options += "<option value=''>Boston Americans</option>";
-      } else if (curYear >= 1908) {
+      } else if (newYear >= 1908) {
         options += "<option value=''>Boston Red Sox</option>";
       }
 
       // Chicago Cubs
-      if (curYear >= 1876 && curYear <= 1889) {
+      if (newYear >= 1876 && newYear <= 1889) {
         options += "<option value=''>Chicago White Stockings</option>";
-      } else if (curYear >= 1890 && curYear <= 1897) {
+      } else if (newYear >= 1890 && newYear <= 1897) {
         options += "<option value=''>Chicago Colts</option>";
-      } else if (curYear >= 1898 && curYear <= 1902) {
+      } else if (newYear >= 1898 && newYear <= 1902) {
         options += "<option value=''>Chicago Orphans</option>";
-      } else if (curYear >= 1903) {
+      } else if (newYear >= 1903) {
         options += "<option value=''>Chicago Cubs</option>";
       }
 
       // Chicago White Sox
-      if (curYear >= 1901) {
+      if (newYear >= 1901) {
         options += "<option value=''>Chicago White Sox</option>";
       }
 
       // Cincinnati Reds
-      if (curYear >= 1882 && curYear <= 1889) {
+      if (newYear >= 1882 && newYear <= 1889) {
         options += "<option value=''>Cincinnati Red Stockings</option>";
-      } else if (curYear >= 1890 && curYear <= 1953) {
+      } else if (newYear >= 1890 && newYear <= 1953) {
         options += "<option value=''>Cincinnati Reds</option>";
-      } else if (curYear >= 1954 && curYear <= 1958) {
+      } else if (newYear >= 1954 && newYear <= 1958) {
         options += "<option value=''>Cincinnati Redlegs</option>";
-      } else if (curYear >= 1959) {
+      } else if (newYear >= 1959) {
         options += "<option value=''>Cincinnati Reds</option>";
       }
 
       // Cleveland Indians
-      if (curYear === 1901) {
+      if (newYear === 1901) {
         options += "<option value=''>Cleveland Blues</option>";
-      } else if (curYear === 1902) {
+      } else if (newYear === 1902) {
         options += "<option value=''>Cleveland Bronchos</option>";
-      } else if (curYear >= 1903 && curYear <= 1914) {
+      } else if (newYear >= 1903 && newYear <= 1914) {
         options += "<option value=''>Cleveland Naps</option>";
-      } else if (curYear >= 1915) {
+      } else if (newYear >= 1915) {
         options += "<option value=''>Cleveland Indians</option>";
       }
 
       // Colorado Rockies
-      if (curYear >= 1993) {
+      if (newYear >= 1993) {
         options += "<option value=''>Colorado Rockies</option>";
       }
 
       // Detroit Tigers
-      if (curYear >= 1901) {
+      if (newYear >= 1901) {
         options += "<option value=''>Detroit Tigers</option>";
       }
 
       // Houston Astros
-      if (curYear >= 1962 && curYear <= 1964) {
+      if (newYear >= 1962 && newYear <= 1964) {
         options += "<option value=''>Houston Colt .45&apos;s</option>";
-      } else if (curYear >= 1965) {
+      } else if (newYear >= 1965) {
         options += "<option value=''>Houston Astros</option>";
       }
 
       // Kansas City Royals
-      if (curYear >= 1969) {
+      if (newYear >= 1969) {
         options += "<option value=''>Kansas City Royals</option>";
       }
 
       // Los Angeles Angels
-      if (curYear >= 1961 && curYear <= 1964) {
+      if (newYear >= 1961 && newYear <= 1964) {
         options += "<option value=''>Los Angeles Angels</option>";
-      } else if (curYear >= 1965 && curYear <= 1996) {
+      } else if (newYear >= 1965 && newYear <= 1996) {
         options += "<option value=''>California Angels</option>";
-      } else if (curYear >= 1997 && curYear <= 2004) {
+      } else if (newYear >= 1997 && newYear <= 2004) {
         options += "<option value=''>Anaheim Angels</option>";
-      } else if (curYear >= 2005) {
+      } else if (newYear >= 2005) {
         options += "<option value=''>Los Angeles Angels</option>";
       }
 
       // Los Angeles Dodgers
-      if (curYear === 1884) {
+      if (newYear === 1884) {
         options += "<option value=''>Brooklyn Atlantics</option>";
-      } else if (curYear >= 1885 && curYear <= 1887) {
+      } else if (newYear >= 1885 && newYear <= 1887) {
         options += "<option value=''>Brooklyn Grays</option>";
-      } else if (curYear >= 1888 && curYear <= 1890) {
+      } else if (newYear >= 1888 && newYear <= 1890) {
         options += "<option value=''>Brooklyn Bridegrooms</option>";
-      } else if (curYear >= 1891 && curYear <= 1895) {
+      } else if (newYear >= 1891 && newYear <= 1895) {
         options += "<option value=''>Brooklyn Grooms</option>";
-      } else if (curYear >= 1896 && curYear <= 1898) {
+      } else if (newYear >= 1896 && newYear <= 1898) {
         options += "<option value=''>Brooklyn Bridegrooms</option>";
-      } else if (curYear >= 1899 && curYear <= 1910) {
+      } else if (newYear >= 1899 && newYear <= 1910) {
         options += "<option value=''>Brooklyn Superbas</option>";
-      } else if (curYear >= 1911 && curYear <= 1912) {
+      } else if (newYear >= 1911 && newYear <= 1912) {
         options += "<option value=''>Brooklyn Dodgers</option>";
-      } else if (curYear === 1913) {
+      } else if (newYear === 1913) {
         options += "<option value=''>Brooklyn Superbas</option>";
-      } else if (curYear >= 1914 && curYear <= 1931) {
+      } else if (newYear >= 1914 && newYear <= 1931) {
         options += "<option value=''>Brooklyn Robins</option>";
-      } else if (curYear >= 1932 && curYear <= 1957) {
+      } else if (newYear >= 1932 && newYear <= 1957) {
         options += "<option value=''>Brooklyn Dodgers</option>";
-      } else if (curYear >= 1958) {
+      } else if (newYear >= 1958) {
         options += "<option value=''>Los Angeles Dodgers</option>";
       }
 
       // Miami Marlins
-      if (curYear >= 1993 && curYear <= 2011) {
+      if (newYear >= 1993 && newYear <= 2011) {
         options += "<option value=''>Florida Marlins</option>";
-      } else if (curYear >= 2012) {
+      } else if (newYear >= 2012) {
         options += "<option value=''>Miami Marlins</option>";
       }
 
       // Milwaukee Brewers
-      if (curYear === 1969) {
+      if (newYear === 1969) {
         options += "<option value=''>Seattle Pilots</option>";
-      } else if (curYear >= 1970) {
+      } else if (newYear >= 1970) {
         options += "<option value=''>Milwaukee Brewers</option>";
       }
 
       // Minnesota Twins
-      if (curYear >= 1901 && curYear <= 1960) {
+      if (newYear >= 1901 && newYear <= 1960) {
         options += "<option value=''>Washington Senators</option>";
-      } else if (curYear >= 1961) {
+      } else if (newYear >= 1961) {
         options += "<option value=''>Minnesota Twins</option>";
       }
 
       // New York Mets
-      if (curYear >= 1962) {
+      if (newYear >= 1962) {
         options += "<option value=''>New York Mets</option>";
       }
 
       // New York Yankees
-      if (curYear >= 1903 && curYear <= 1912) {
+      if (newYear >= 1903 && newYear <= 1912) {
         options += "<option value=''>New York Highlanders</option>";
-      } else if (curYear >= 1913) {
+      } else if (newYear >= 1913) {
         options += "<option value=''>New York Yankees</option>";
       }
 
       // Oakland A's
-      if (curYear >= 1901 && curYear <= 1954) {
+      if (newYear >= 1901 && newYear <= 1954) {
         options += "<option value=''>Philadelphia Athletics</option>";
-      } else if (curYear >= 1955 && curYear <= 1967) {
+      } else if (newYear >= 1955 && newYear <= 1967) {
         options += "<option value=''>Kansas City Athletics</option>";
-      } else if (curYear >= 1968) {
+      } else if (newYear >= 1968) {
         options += "<option value=''>Oakland Athletics</option>";
       }
 
       // Philadelphia Phillies
-      if (curYear >= 1883 && curYear <= 1889) {
+      if (newYear >= 1883 && newYear <= 1889) {
         options += "<option value=''>Philadelphia Quakers</option>";
-      } else if (curYear >= 1890) {
+      } else if (newYear >= 1890) {
         options += "<option value=''>Philadelphia Phillies</option>";
       }
 
       // Pittsburg Pirates
-      if (curYear >= 1882 && curYear <= 1890) {
+      if (newYear >= 1882 && newYear <= 1890) {
         options += "<option value=''>Pittsburgh Alleghenys</option>";
-      } else if (curYear >= 1891) {
+      } else if (newYear >= 1891) {
         options += "<option value=''>Pittsburgh Pirates</option>";
       }
 
       // San Diego Padres
-      if (curYear >= 1969) {
+      if (newYear >= 1969) {
         options += "<option value=''>San Diego Padres</option>";
       }
 
       // San Francisco Giants
-      if (curYear >= 1883 && curYear <= 1884) {
+      if (newYear >= 1883 && newYear <= 1884) {
         options += "<option value=''>New York Gothams</option>";
-      } else if (curYear >= 1885 && curYear <= 1957) {
+      } else if (newYear >= 1885 && newYear <= 1957) {
         options += "<option value=''>New York Giants</option>";
-      } else if (curYear >= 1958) {
+      } else if (newYear >= 1958) {
         options += "<option value=''>San Francisco Giants</option>";
       }
 
       // Seattle Mariners
 
-      if (curYear >= 1977) {
+      if (newYear >= 1977) {
         options += "<option value=''>Seattle Mariners</option>";
       }
 
       // St. Louis Cardinals
-      if (curYear === 1882) {
+      if (newYear === 1882) {
         options += "<option value=''>St. Louis Brown Stockings</option>";
-      } else if (curYear >= 1883 && curYear <= 1898) {
+      } else if (newYear >= 1883 && newYear <= 1898) {
         options += "<option value=''>St. Louis Browns</option>";
-      } else if (curYear === 1899) {
+      } else if (newYear === 1899) {
         options += "<option value=''>St. Louis Perfectos</option>";
-      } else if (curYear >= 1900) {
+      } else if (newYear >= 1900) {
         options += "<option value=''>St. Louis Cardinals</option>";
       }
 
       // Tampa Bay Rays
-      if (curYear >= 1998 && curYear <= 2007) {
+      if (newYear >= 1998 && newYear <= 2007) {
         options += "<option value=''>Tampa Bay Devil Rays</option>";
-      } else if (curYear >= 2008) {
+      } else if (newYear >= 2008) {
         options += "<option value=''>Tampa Bay Rays</option>";
       }
 
       // Texas Rangers
-      if (curYear >= 1961 && curYear <= 1971) {
+      if (newYear >= 1961 && newYear <= 1971) {
         options += "<option value=''>Washington Senators</option>";
-      } else if (curYear >= 1972) {
+      } else if (newYear >= 1972) {
         options += "<option value=''>Texas Rangers</option>";
       }
 
       // Toronto Blue Jays
-      if (curYear >= 1977) {
+      if (newYear >= 1977) {
         options += "<option value=''>Toronto Blue Jays</option>";
       }
 
       // Washington Nationals
-      if (curYear >= 1969 && curYear <= 2004) {
+      if (newYear >= 1969 && newYear <= 2004) {
         options += "<option value=''>Montreal Expos</option>";
-      } else if (curYear >= 2005) {
+      } else if (newYear >= 2005) {
         options += "<option value=''>Washington Nationals</option>";
       }
 
