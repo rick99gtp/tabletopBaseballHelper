@@ -8,7 +8,7 @@ body {
 
 /* Global */
 .container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -26,8 +26,12 @@ ul {
   margin-bottom: 10px;
 }
 
+.select-area {
+  width: 90%;
+}
+
 .p-inline {
-  display: inline;
+  float: left;
 }
 
 /* header */
@@ -74,31 +78,58 @@ header a:hover {
   font-weight: bold;
 }
 
-/* Showcase */
-#gamedate {
+#thecontent .gamedate #floatleft {
   float: left;
-  overflow: hidden;
 }
 
-#gamedate>p {
+/* Showcase */
+#thecontent .gamedate {
+  float: left;
+  overflow: hidden;
+  margin: 20px 5px 0px 5px;
+  border: 1px solid #dddddd;
+  border-radius: 7px 7px 7px 7px;
+  color: #ffffff;
+  background: rgba(255,0,0,0.1);
+  text-align: center;
+  width: 20%;
+}
+
+#thecontent .gamedate > div {
+  float: left;
+}
+
+.gamedate > select {
+  float: right;
+}
+
+#buttons {
+  display: inline-block;
+  width: 90%;
+}
+
+#thecontent .gamedate p {
   margin: 0;
 }
 
-#gamedate>div {
+#thecontent .gamedate div {
   padding-left: 10px;
-  margin-top: 10px;
 }
 
-/* boxes */
-#boxes {
+#thecontent {
   margin-top: 20px;
 }
 
-#boxes #algames {
+#thecontent .box {
   float: left;
+  width: 35%;
+  margin: 0 auto;
   text-align: center;
-  width: 45%;
-  overflow: hidden;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+#algames {
   padding: 0 5px 5px 5px;
   border: 1px solid #dddddd;
   border-radius: 7px 7px 7px 7px;
@@ -125,7 +156,7 @@ header a:hover {
   color: #000;
 }
 
-#nlgames a:hover {
+#nlgames > a:hover {
   cursor: pointer;
 }
 
@@ -133,17 +164,12 @@ header a:hover {
   cursor: grab;
 }
 
-#boxes #nlgames {
-  float: left;
-  text-align: center;
-  width: 45%;
-  overflow: hidden;
+#nlgames {
   padding: 0 5px 5px 5px;
   border: 1px solid #dddddd;
   border-radius: 7px 7px 7px 7px;
   color: #ffffff;
   background: rgba(0, 87, 255, 0.1);
-  margin-left: 10px;
 }
 
 select {
@@ -188,6 +214,8 @@ select {
 }
 
 footer {
+  float: left;
+  width: 100%;
   padding: 20px;
   margin-top: 120px;
   color: #ffffff;
@@ -208,11 +236,6 @@ footer {
     #f35 0%, #43e 100%);
 }
 
-#space-between {
-  float: left;
-  width: 10%;
-}
-
 #al {
   border-radius: 7px 7px 0 0;
   color: #000000;
@@ -223,51 +246,43 @@ footer {
   color: #000000;
 }
 
+#prev-button {
+  float: left;
+}
+
+#next-button {
+  float: right;
+}
+
 .button {
-  float: left;
   border-radius: 4px;
   background-color: #f4511e;
   border: none;
   color: #FFFFFF;
   text-align: center;
   font-size: 12px;
-  padding: 10px;
-  width: 100px;
+  padding: 5px;
+  width: 75px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
 }
 
-.button2 {
-  float: left;
-  border-radius: 4px;
-  background-color: #f4511e;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 12px;
-  padding: 10px;
-  width: 100px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.button span {
+#next-button span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.button2 span {
+#prev-button span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.button span:after {
+#next-button span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -276,29 +291,29 @@ footer {
   transition: 0.5s;
 }
 
-.button2 span:after {
+#prev-button span:after {
   content: '\00ab';
   position: absolute;
   opacity: 0;
   top: 0;
-  left: -20px;
+  left: -30px;
   transition: 0.5s;
 }
 
-.button2:hover span {
+#prev-button:hover span {
   padding-left: 25px;
 }
 
-.button:hover span {
+#next-button:hover span {
   padding-right: 25px;
 }
 
-.button2:hover span:after {
+#prev-button:hover span:after {
   opacity: 1;
   left: 0;
 }
 
-.button:hover span:after {
+#next-button:hover span:after {
   opacity: 1;
   right: 0;
 }

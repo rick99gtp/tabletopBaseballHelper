@@ -263,9 +263,9 @@
         hPos[7] = getPos(myObj.gameday[gameLoop].homeplayerposition8);
         hPos[8] = getPos(myObj.gameday[gameLoop].homeplayerposition9);
 
-        for(let x=0; x < 9; x++) {
-          vBatter[x] = vBatter[x].replace("'","%27");
-          hBatter[x] = hBatter[x].replace("'","%27");
+        for (let x = 0; x < 9; x++) {
+          vBatter[x] = vBatter[x].replace("'", "%27");
+          hBatter[x] = hBatter[x].replace("'", "%27");
         }
 
         hPitcher = myObj.gameday[gameLoop].homepitchername;
@@ -289,10 +289,12 @@
             "&vLine4=" + vLine[3] + "&vLine5=" + vLine[4] + "&vLine6=" + vLine[5] + "&vLine7=" + vLine[6] + "&vLine8=" + vLine[7] + "&vLine9=" + vLine[8] + "&vLine10=" + vLine[9] + "&vLine11=" + vLine[10] + "&vLine12=" + vLine[11] + "&hLine1=" +
             hLine[0] + "&hLine2=" + hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] + "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&hLine10=" + hLine[9] +
             "&hLine11=" + hLine[10] + "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vHits=" + vHits + "&hHits=" + hHits + "&vErrors=" + vErrors + "&hErrors=" + hErrors +
-            "' target='_blank'><div class='game'><div class='card'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames name-shadow' style='color:" + visTeamFontColor + "; background-image: radial-gradient(farthest-corner at 40px 40px," + visTeamColor + " 50%, transparent 100%);" + ";'>" +
+            "' target='_blank'><div class='game'><div class='card'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames name-shadow' style='color:" +
+            visTeamFontColor + "; background-image: radial-gradient(farthest-corner at 40px 40px," + visTeamColor + " 50%, transparent 100%);" + ";'>" +
             visTeam +
             "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
-              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames name-shadow' style='color:" + homeTeamFontColor + "; background-image: radial-gradient(farthest-corner at 40px 40px," + homeTeamColor + " 50%, transparent 100%);" + ";'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
+              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames name-shadow' style='color:" + homeTeamFontColor +
+            "; background-image: radial-gradient(farthest-corner at 40px 40px," + homeTeamColor + " 50%, transparent 100%);" + ";'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
               1] +
             "</div><div>" + hLine[2] +
             "</div><div>" + hLine[3] + "</div><div>" + hLine[4] +
@@ -310,10 +312,12 @@
             "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&vLine10=" + vLine[9] + "&vLine11=" + vLine[10] + "&vLine12=" + vLine[11] + "&hLine1=" + hLine[0] + "&hLine2=" +
             hLine[1] + "&hLine3=" + hLine[2] + "&hLine4=" + hLine[3] + "&hLine5=" + hLine[4] + "&hLine6=" + hLine[5] + "&hLine7=" + hLine[6] + "&hLine8=" + hLine[7] + "&hLine9=" + hLine[8] + "&hLine10=" + hLine[9] + "&hLine11=" + hLine[10] +
             "&hLine12=" + hLine[11] + "&vRuns=" + vScore + "&hRuns=" + hScore + "&vErrors=" + vErrors + "&hErrors=" + hErrors + "&vHits=" + vHits + "&hHits=" + hHits +
-            "' target='_blank'><div class='game'><div class='card'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames name-shadow' style='color:" + visTeamFontColor + "; background-image: radial-gradient(farthest-corner at 40px 40px," + visTeamColor + " 50%, transparent 100%);" + ";'>" +
+            "' target='_blank'><div class='game'><div class='card'><div id='teamnames'></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>X</div><div>R</div><div>H</div><div>E</div><div class='teamnames name-shadow' style='color:" +
+            visTeamFontColor + "; background-image: radial-gradient(farthest-corner at 40px 40px," + visTeamColor + " 50%, transparent 100%);" + ";'>" +
             visTeam +
             "</div><div>" + vLine[0] + "</div><div>" + vLine[1] + "</div><div>" + vLine[2] + "</div><div>" + vLine[3] + "</div><div>" + vLine[4] + "</div><div>" + vLine[5] + "</div><div>" + vLine[6] + "</div><div>" + vLine[7] + "</div><div>" + vLine[
-              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames name-shadow' style='color:" + homeTeamFontColor + "; background-image: radial-gradient(farthest-corner at 40px 40px," + homeTeamColor + " 50%, transparent 100%);" + ";'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
+              8] + "</div><div>" + vExtraInningRuns + "</div><div>" + myObj.gameday[gameLoop].visscore + "</div><div>" + vHits + "</div><div>" + vErrors + "</div><div class='teamnames name-shadow' style='color:" + homeTeamFontColor +
+            "; background-image: radial-gradient(farthest-corner at 40px 40px," + homeTeamColor + " 50%, transparent 100%);" + ";'>" + homeTeam + "</div><div>" + hLine[0] + "</div><div>" + hLine[
               1] +
             "</div><div>" + hLine[2] + "</div><div>" + hLine[3] + "</div><div>" + hLine[4] + "</div><div>" + hLine[5] + "</div><div>" + hLine[6] + "</div><div>" + hLine[7] + "</div><div>" + hLine[8] + "</div><div>" + hExtraInningRuns + "</div><div>" +
             myObj.gameday[gameLoop].homescore + "</div><div>" + hHits + "</div><div>" + hErrors + "</div></div><div class='pitcher-details'><strong>Winning Pitcher: </strong>" + winningPitcherName + "  <strong>Losing Pitcher: </strong>" +
@@ -322,11 +326,10 @@
             "</div></div></a>";
         }
 
-        if(curSeason === "Regular") {
+        if (curSeason === "Regular") {
           document.getElementById('algames').innerHTML = "<div id='al'>American League</div>" + addThisHtmlToAL;
           document.getElementById('nlgames').innerHTML = "<div id='nl'>National League</div>" + addThisHtmlToNL;
-        }
-        else {
+        } else {
           document.getElementById('algames').innerHTML = "<div id='al'></div>" + addThisHtmlToAL;
           document.getElementById('nlgames').innerHTML = "<div id='nl'>National League</div>" + addThisHtmlToNL;
         }
@@ -336,33 +339,33 @@
     }
 
     function getPos(pos) {
-      let thisPos = ["","P","C","1B","2B","3B","SS","LF","CF","RF","DH"];
+      let thisPos = ["", "P", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH"];
 
       return thisPos[parseInt(pos)];
-/*
-      switch (pos) {
-        case "1":
-          return "P";
-        case "2":
-          return "C";
-        case "3":
-          return "1B";
-        case "4":
-          return "2B";
-        case "5":
-          return "3B";
-        case "6":
-          return "SS";
-        case "7":
-          return "LF";
-        case "8":
-          return "CF";
-        case "9":
-          return "RF";
-        case "10":
-          return "DH";
-      }
-      */
+      /*
+            switch (pos) {
+              case "1":
+                return "P";
+              case "2":
+                return "C";
+              case "3":
+                return "1B";
+              case "4":
+                return "2B";
+              case "5":
+                return "3B";
+              case "6":
+                return "SS";
+              case "7":
+                return "LF";
+              case "8":
+                return "CF";
+              case "9":
+                return "RF";
+              case "10":
+                return "DH";
+            }
+            */
     }
 
     function getTeamFontColor(teamName) {
@@ -468,10 +471,9 @@
         case "ALS":
           return "AL All-Stars";
         case "ANA":
-          if(curYear >= 2005) {
+          if (curYear >= 2005) {
             return "Los Angeles (A)";
-          }
-          else {
+          } else {
             return "Anaheim";
           }
         case "ARI":
@@ -586,7 +588,6 @@
 
         }
 
-        document.getElementById("nlgames").style.display = "initial";
       } else if (curSeason === "All-Star") {
 
         for (let i = 0; i < myObj.gameday.length; i++) {
@@ -623,40 +624,35 @@
     </div>
   </header>
 
-  <section id="gamedate">
-    <div>
-      <p class="p-inline">Year</p>
-      <select id="year" onchange="updatedYear()"></select>
-    </div>
-    <div>
-      <p class="p-inline">Day</p>
-      <select id="day" onchange="updatedDay()"></select>
-    </div>
-    <div>
-      <p class="p-inline">Season</p>
-      <select id="season" onchange="updatedSeason()">
-        <option value='Regular'>Regular</option>
-        <option value='Playoffs'>Playoffs</option>
-        <option value='All-Star'>All-Star</option>
-      </select>
-    </div>
-    <div>
-      <p class="p-inline">Team</p>
-      <select id="team" onchange="updatedTeam"></select>
-    </div>
-    <div>
-      <button id="prev-button" class="button2" style="vertical-align:middle" onclick="changeDay(0)"><span>Prev</span></button>
-      <button id="next-button" class="button" style="vertical-align:middle" onclick="changeDay(1)"><span>Next</span></button>
-    </div>
-  </section>
-
-  <section id="boxes">
+  <section id="thecontent">
     <div class="container">
-      <div id="algames">
-
+      <div class="gamedate">
+        <div class="select-area"><p class="p-inline">Year</p><select id="year" onchange="updatedYear()"></select>
+        </div>
+        <div class="select-area"><p class="p-inline">Day</p><select id="day" onchange="updatedDay()"></select>
+        </div>
+        <div class="select-area"><p class="p-inline">Season</p><select id="season" onchange="updatedSeason()">
+            <option value='Regular'>Regular</option>
+            <option value='Playoffs'>Playoffs</option>
+            <option value='All-Star'>All-Star</option>
+          </select>
+        </div>
+        <div class="select-area"><p class="p-inline">Team</p><select id="team" onchange="updatedTeam"></select>
+        </div>
+        <div id="buttons">
+          <button id="prev-button" class="button" style="vertical-align:middle" onclick="changeDay(0)"><span>Prev</span></button>
+          <button id="next-button" class="button" style="vertical-align:middle" onclick="changeDay(1)"><span>Next</span></button>
+        </div>
       </div>
-      <div id="nlgames">
+      <div class="box">
+        <div id="algames">
 
+        </div>
+      </div>
+      <div class="box">
+        <div id="nlgames">
+
+        </div>
       </div>
     </div>
   </section>
@@ -686,24 +682,23 @@
     }
 
     function setSelectedIndex(s, i) {
-      s.options[i-1].selected = true;
+      s.options[i - 1].selected = true;
       return;
     }
 
     function changeDay(num) {
-      if(num === 0) {
+      if (num === 0) {
         let x = document.getElementById("day").selectedIndex;
 
-        if(x > 0) {
-          setSelectedIndex(document.getElementById("day"),x);
+        if (x > 0) {
+          setSelectedIndex(document.getElementById("day"), x);
           getGames();
         }
-      }
-      else {
+      } else {
         let x = document.getElementById("day").selectedIndex;
 
-        if(x < document.getElementById("day").length-1) {
-          setSelectedIndex(document.getElementById("day"),x + 2);
+        if (x < document.getElementById("day").length - 1) {
+          setSelectedIndex(document.getElementById("day"), x + 2);
           getGames();
         }
       }
