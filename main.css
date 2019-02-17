@@ -1,0 +1,319 @@
+body {
+  font: 15px/1.5 Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #F9F7F7;
+  height: 100%;
+}
+
+/* Global */
+.container {
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.dark {
+  padding: 50px;
+  background: #35424a;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.select-area {
+  width: 90%;
+}
+
+.p-inline {
+  float: left;
+}
+
+/* header */
+header {
+  background-color: #35424a;
+  color: #ffffff;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: #e8491d 3px solid;
+}
+
+header a {
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+header li {
+  float: left;
+  display: inline;
+  padding: 0 20px 0 20px;
+}
+
+header #branding {
+  float: left;
+}
+
+header #branding h1 {
+  margin: 0;
+}
+
+header nav {
+  margin-top: 10px;
+  float: right;
+}
+
+header .highlight, header .current a {
+  color: #e8491d;
+  font-weight: bold;
+}
+
+header a:hover {
+  font-weight: bold;
+}
+
+#thecontent .gamedate #floatleft {
+  float: left;
+}
+
+/* Showcase */
+#thecontent .gamedate {
+  float: left;
+  overflow: hidden;
+  margin: 20px 5px 0px 5px;
+  border: 1px solid #dddddd;
+  border-radius: 7px 7px 7px 7px;
+  color: #ffffff;
+  background: rgba(255,0,0,0.1);
+  text-align: center;
+  width: 20%;
+}
+
+#thecontent .gamedate > div {
+  float: left;
+}
+
+.gamedate > select {
+  float: right;
+}
+
+#buttons {
+  display: inline-block;
+  width: 90%;
+}
+
+#thecontent .gamedate p {
+  margin: 0;
+}
+
+#thecontent .gamedate div {
+  padding-left: 10px;
+}
+
+#thecontent {
+  margin-top: 20px;
+}
+
+#thecontent .box {
+  float: left;
+  width: 35%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+#algames {
+  padding: 0 5px 5px 5px;
+  border: 1px solid #dddddd;
+  border-radius: 7px 7px 7px 7px;
+  color: #ffffff;
+  background: rgba(255,0,0,0.1);
+}
+
+#algames a {
+  color: #000;
+  text-decoration: none;
+}
+
+.pitcher-details {
+  font-size: 10px;
+  line-height: 2;
+}
+
+#algames a:hover {
+  cursor: grab;
+}
+
+#nlgames a {
+  text-decoration: none;
+  color: #000;
+}
+
+#nlgames > a:hover {
+  cursor: pointer;
+}
+
+.card:hover {
+  cursor: grab;
+}
+
+#nlgames {
+  padding: 0 5px 5px 5px;
+  border: 1px solid #dddddd;
+  border-radius: 7px 7px 7px 7px;
+  color: #ffffff;
+  background: rgba(0, 87, 255, 0.1);
+}
+
+select {
+  float: right;
+}
+
+.game:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+.game {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  background: #ffffff;
+}
+
+.name-shadow {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 150px auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  grid-gap: 1px;
+  background-color: #;
+  padding: 5px;
+}
+
+.card>div {
+  background-color: rgba(200, 200, 200, 0.3);
+  text-align: center;
+  font-size: 15px;
+}
+
+.card .teamnames {
+  text-align: left;
+  grid-column: 1 / 2;
+  padding-left: 4px;
+  border-radius: 5px;
+}
+
+footer {
+  float: left;
+  width: 100%;
+  padding: 20px;
+  margin-top: 120px;
+  color: #ffffff;
+  background-color: #e8491d;
+  text-align: center;
+}
+
+/* media queries */
+@media(max-width: 768px) {
+  header #branding,
+  header nav,
+  header nav li,
+  #boxes .box
+}
+
+.radial-gradient {
+  background-image: radial-gradient(farthest-corner at 40px 40px,
+    #f35 0%, #43e 100%);
+}
+
+#al {
+  border-radius: 7px 7px 0 0;
+  color: #000000;
+}
+
+#nl {
+  border-radius: 7px 7px 0 0;
+  color: #000000;
+}
+
+#prev-button {
+  float: left;
+}
+
+#next-button {
+  float: right;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 12px;
+  padding: 5px;
+  width: 75px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#next-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#prev-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#next-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#prev-button span:after {
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -30px;
+  transition: 0.5s;
+}
+
+#prev-button:hover span {
+  padding-left: 25px;
+}
+
+#next-button:hover span {
+  padding-right: 25px;
+}
+
+#prev-button:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+
+#next-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
