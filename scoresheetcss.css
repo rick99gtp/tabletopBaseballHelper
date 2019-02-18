@@ -2135,7 +2135,7 @@
 
 @page {
   size: letter;
-  margin: 8mm 12mm 0mm 12mm;
+  margin: 8mm 10mm 0mm 12mm;
 }
 
 .vBatter p {
@@ -2169,4 +2169,16 @@
   font-size: 9px;
   padding-right: 2px;
   padding-top: 1px;
+}
+
+.diamond {
+  color: rgba(0,0,0,0.1);
+  line-height: 1.25;
+  transform: scale(3, 1.75);
+
+  text-align: center;
+}
+
+#footer-date {
+  font-size: 12px;
 }
