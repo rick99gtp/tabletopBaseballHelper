@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="scoresheetcss.css" />
-  <title>Scoresheet for 3-29-2018</title>
+  <title id="this-title">Scoresheet for 3-29-2018</title>
   <script type="text/javascript">
   function getUrlVars() {
     var vars = {};
@@ -21,7 +21,7 @@
 
   <div class="container">
     <!-- HEADER -->
-    <div class="headGrid grid-border-left-thick">VISITING TEAMNAME</div>
+    <div id="vis-team-name" class="headGrid grid-border-left-thick">VISITING TEAMNAME</div>
     <div class="headGrid grid-border-left-thick">POS</div>
     <div class="headGrid grid-border-left">RNG</div>
     <div class="headGrid grid-border-left">ERROR</div>
@@ -44,7 +44,7 @@
     <!-- 1ST ROW -->
     <div class="vBatter normal-cell-left">
       <p class="lineupNumbersLeft">1</p>
-      <p id="vBatter1Name" class="adjustName">Albert Pujols</p>
+      <p id="vBatter1Name" class="adjustName"></p>
     </div>
     <div class="vBatter normal-cell-left center-text">
       <p id="vPos1" class="adjustPos"></p>
@@ -79,7 +79,7 @@
     <!-- 2ND ROW -->
     <div class="vBatter normal-cell-left">
       <p class="lineupNumbersLeft">2</p>
-      <p id="vBatter2Name" class="adjustName">Albert Pujols</p>
+      <p id="vBatter2Name" class="adjustName"></p>
     </div>
     <div class="vBatter normal-cell-left center-text">
       <p id="vPos2" class="adjustPos"></p>
@@ -533,7 +533,7 @@
 
     <!-- HOME SECTION -->
     <!-- HEADER -->
-    <div class="headGrid grid-border-left-thick">HOME TEAMNAME</div>
+    <div id="home-team-name" class="headGrid grid-border-left-thick">HOME TEAMNAME</div>
     <div class="headGrid grid-border-left-thick">POS</div>
     <div class="headGrid grid-border-left">RNG</div>
     <div class="headGrid grid-border-left">ERROR</div>
@@ -991,7 +991,7 @@
     <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
     <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
     <div class="grey-cell grid-border-left grid-border-bottom-thick"></div>
-    <div class="copyright copyright-place center-text"><p>&copy; 2019 Top Prospect Baseball &nbsp; &nbsp; https:www.wordpress.org/tabletopHelper.html</p></div>
+    <div class="copyright copyright-place center-text"><p>&copy; 2019 Top Prospect Baseball &nbsp; &nbsp; https:www.topprospectgame.com</p></div>
 
   </div>
   <script type="text/javascript">
@@ -1001,10 +1001,19 @@
   // get lineups and PITCHERS
 
   function showPlayers() {
+    // get date of games
+    let day = getUrlVars()["date"];
+    let year = getUrlVars()["year"];
+    day = day.replace("%20"," ") + ", " + year;
+
+    // put title on tab of page
+    document.title = day;
+
     // visitors first
     for(let i = 1; i < 10; i++) {
       let name = getUrlVars()["vBatter" + i];
       let newName = name.replace("%20"," ");
+      newName = newName.replace("%27","'");
       document.getElementById("vBatter" + i + "Name").innerHTML = newName;
     }
 
@@ -1015,13 +1024,15 @@
     }
 
     name = getUrlVars()["vPitcher"];
-    newName = name.replace(/%20/g," ");
+    newName = name.replace("%20"," ");
+    newName = newName.replace("%27","'");
     document.getElementById("vPitcherName").innerHTML = newName;
 
     // home next
     for(let i = 1; i < 10; i++) {
-      var name = getUrlVars()["hBatter" + i];
-      var newName = name.replace("%20"," ");
+      name = getUrlVars()["hBatter" + i];
+      newName = name.replace("%20"," ");
+      newName = newName.replace("%27","'");
       document.getElementById("hBatter" + i + "Name").innerHTML = newName;
     }
 
@@ -1033,15 +1044,18 @@
 
     name = getUrlVars()["hPitcher"];
     newName = name.replace(/%20/g," ");
+    newName = newName.replace("%27","'");
     document.getElementById("hPitcherName").innerHTML = newName;
 
     name = getUrlVars()["visTeam"];
     newName = name.replace(/%20/g," ");
     document.getElementById("visTeam").innerHTML = newName;
+    document.getElementById("vis-team-name").innerHTML = newName;
 
     name = getUrlVars()["homeTeam"];
     newName = name.replace(/%20/g," ");
     document.getElementById("homeTeam").innerHTML = newName;
+    document.getElementById("home-team-name").innerHTML = newName;
 
     // get all visitor and home runs
     for(let i=1; i < 13; i++) {

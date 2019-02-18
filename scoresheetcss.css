@@ -1,7 +1,7 @@
 .container {
   display: grid;
   grid-template-columns: 128px repeat(2, 38px) 76px repeat(2, 38px) repeat(12, 52px) 34px 35px 34px;
-  grid-template-rows: 20px repeat(18, 24px) 20px repeat(8, 24px) 20px repeat(2, 24px) 20px repeat(18, 24px) 20px repeat(9, 24px) 20px;
+  grid-template-rows: 20px repeat(18, 25px) 20px repeat(8, 25px) 20px repeat(2, 25px) 20px repeat(18, 25px) 20px repeat(9, 25px) 20px;
   padding: 0;
   margin: 0;
   font-family: "Helvetica", sans-serf;
@@ -20,7 +20,6 @@
   text-align: left;
   color: #888888;
   font-size: 12px;
-  padding-left: 1px;
   margin: 0;
   line-height: 2;
 }
@@ -828,6 +827,7 @@
 .normal-cell-left {
   border-left: 2px solid #000;
   border-bottom: 1px solid #000;
+  padding-left: 2px;
 }
 
 .normal-cell-right {
@@ -2129,9 +2129,13 @@
   }
 }
 
+#vis-team-name, #home-team-name {
+  text-transform: uppercase;
+}
+
 @page {
   size: letter;
-  margin: 4mm 5mm 0mm 5mm;
+  margin: 8mm 12mm 0mm 12mm;
 }
 
 .vBatter p {

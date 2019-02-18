@@ -27,7 +27,8 @@ ul {
 }
 
 .select-area {
-  width: 90%;
+  width: 92%;
+  margin-bottom: 5px;
 }
 
 .p-inline {
@@ -86,13 +87,14 @@ header a:hover {
 #thecontent .gamedate {
   float: left;
   overflow: hidden;
-  margin: 20px 5px 0px 5px;
-  border: 1px solid #dddddd;
+  margin-top: 20px;
+  border: 1px solid rgba(150, 150, 150, 0.1);
   border-radius: 7px 7px 7px 7px;
   color: #ffffff;
-  background: rgba(255,0,0,0.1);
+  background: rgb(53, 66, 74);
   text-align: center;
   width: 20%;
+  padding: 5px;
 }
 
 #thecontent .gamedate > div {
@@ -105,7 +107,7 @@ header a:hover {
 
 #buttons {
   display: inline-block;
-  width: 90%;
+  width: 92%;
 }
 
 #thecontent .gamedate p {
@@ -189,7 +191,7 @@ select {
 }
 
 .name-shadow {
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .card {
@@ -236,6 +238,14 @@ footer {
     #f35 0%, #43e 100%);
 }
 
+.gradient {
+  background-image:
+    radial-gradient(
+      yellow,
+      #f06d06
+    );
+}
+
 #al {
   border-radius: 7px 7px 0 0;
   color: #000000;
@@ -262,7 +272,7 @@ footer {
   text-align: center;
   font-size: 12px;
   padding: 5px;
-  width: 75px;
+  width: 100px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
