@@ -7,6 +7,8 @@
   <meta name="description" content="TableTop Baseball Helper">
   <meta name="author" content="Richard Beyer">
   <title>TableTop Baseball Helper | Welcome</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/main.css">
 
   <script>
@@ -86,14 +88,13 @@
             return "https://gist.githubusercontent.com/rick99gtp/5965870578c786292064025de49f0910/raw/63b6d1222ef0ecaaeefd586fa15c98d4d40cb251/gl1998.txt";
         }
       } else if (curSeason === "Playoffs") {
-        if(curPlayoffs === "World Series") {
+        if (curPlayoffs === "World Series") {
           return "https://gist.githubusercontent.com/rick99gtp/193c59d1c96ec8163e1b3a5cf42bbdfb/raw/0c58d0a3b783ea7459bdb1092537ce4b3a558a70/ws_file.txt";
-        }
-        else if(curPlayoffs === "Championship Series") {
+        } else if (curPlayoffs === "Championship Series") {
           return "https://gist.githubusercontent.com/rick99gtp/b3750190b29ab0d3a16ed2fb0299471b/raw/c1c4a366abc9fc58fe0ae3bf43c6ae3b01038215/lc_file.txt";
-        } else if(curPlayoffs === "Division Series") {
+        } else if (curPlayoffs === "Division Series") {
           return "https://gist.githubusercontent.com/rick99gtp/ffc079cc779e07b8d432885677df79c8/raw/ed7913c55d3b277735414c7aca46732f302226e7/ds_file.txt";
-        } else if(curPlayoffs === "Wild Card Series") {
+        } else if (curPlayoffs === "Wild Card Series") {
           return "https://gist.githubusercontent.com/rick99gtp/dfa206adb5d8c023c58b2000e4b2fd67/raw/2e2fd69f590d67a8e04ef56738270bd64c46b8bb/wc_file.txt";
         }
       } else {
@@ -162,15 +163,15 @@
         let losingPitcherName = myObj.gameday[gameLoop].losingpitchername;
         let savingPitcherName = myObj.gameday[gameLoop].savingpitchername;
 
-        if(typeof winningPitcherName === "undefined") {
+        if (typeof winningPitcherName === "undefined") {
           winningPitcherName = "(none)";
         }
 
-        if(typeof losingPitcherName === "undefined") {
+        if (typeof losingPitcherName === "undefined") {
           losingPitcherName = "(none)";
         }
 
-        if(typeof savingPitcherName === "undefined") {
+        if (typeof savingPitcherName === "undefined") {
           savingPitcherName = "(none)";
         }
 
@@ -346,18 +347,18 @@
         }
 
         //if (curSeason === "Regular") {
-          document.getElementById('algames').innerHTML = "<div id='al'>American League</div>" + addThisHtmlToAL;
-          document.getElementById('nlgames').innerHTML = "<div id='nl'>National League</div>" + addThisHtmlToNL;
+        document.getElementById('algames').innerHTML = "<div id='al'>American League</div>" + addThisHtmlToAL;
+        document.getElementById('nlgames').innerHTML = "<div id='nl'>National League</div>" + addThisHtmlToNL;
         //} else {
-          //document.getElementById('algames').innerHTML = "<div id='al'>American League</div>" + addThisHtmlToAL;
-          //document.getElementById('nlgames').innerHTML = "<div id='nl'>National League</div>" + addThisHtmlToNL;
+        //document.getElementById('algames').innerHTML = "<div id='al'>American League</div>" + addThisHtmlToAL;
+        //document.getElementById('nlgames').innerHTML = "<div id='nl'>National League</div>" + addThisHtmlToNL;
         //}
 
-        if(alGames === 0) {
+        if (alGames === 0) {
           document.getElementById('algames').innerHTML = "<div id='nl'>American League</div><div>No scheduled games.</div>";
         }
 
-        if(nlGames === 0) {
+        if (nlGames === 0) {
           document.getElementById('nlgames').innerHTML = "<div id='nl'>National League</div><div>No scheduled games.</div>";
         }
 
@@ -612,10 +613,9 @@
 
         // hide the nlgames element
         document.getElementById("nlgames").style.display = "none";
-      }
-      else if(curSeason === "Playoffs") {
+      } else if (curSeason === "Playoffs") {
         document.getElementById("nlgames").style.display = "block";
-        if(curPlayoffs === "World Series") {
+        if (curPlayoffs === "World Series") {
           for (let i = 0; i < myObj.gameday.length; i++) {
             // get date and rearrange to a readable format for the dropdown box
             let newDate = myObj.gameday[i].date;
@@ -631,8 +631,7 @@
             }
 
           }
-        }
-        else if(curPlayoffs === "Championship Series" || curPlayoffs === "Division Series" || curPlayoffs === "Wild Card Series") {
+        } else if (curPlayoffs === "Championship Series" || curPlayoffs === "Division Series" || curPlayoffs === "Wild Card Series") {
           let cs_oldDate = "";
           for (let i = 0; i < myObj.gameday.length; i++) {
             // get date and rearrange to a readable format for the dropdown box
@@ -642,7 +641,7 @@
 
             if (parseInt(newDate) === parseInt(newYear)) {
               newDate = getCompleteDate(myObj.gameday[i].date);
-              if(newDate !== cs_oldDate) {
+              if (newDate !== cs_oldDate) {
                 let el = document.createElement("option");
                 el.textContent = newDate;
                 el.value = myObj.gameday[i].date;
@@ -663,49 +662,98 @@
 <!--HEADER-->
 
 <body>
-  <header>
-    <div class="container">
-      <div id="branding">
-        <h1><span class="highlight">TableTop</span> Baseball Helper</h1>
-      </div>
-    </div>
-  </header>
+  <!-- Title -->
+  <section id="header-title">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href=""><span class="highlight-two">digi</span><span class="grey-highlight">tal</span><span class="highlight-two">Dugout</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <section id="thecontent">
-    <div class="container">
-      <div class="gamedate">
-        <div class="select-area">
-          <p class="p-inline">Year</p><select id="year" onchange="updatedYear()"></select>
+        <!-- Nav -->
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Scoresheets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Forum</a>
+            </li>
+          </ul>
         </div>
-        <div class="select-area">
-          <p class="p-inline">Day</p><select id="day" onchange="updatedDay()"></select>
-        </div>
-        <div class="select-area">
-          <p class="p-inline">Season</p><select id="season" onchange="updatedSeason()">
-            <option value='Regular'>Regular</option>
-            <option value='Playoffs'>Playoffs</option>
-            <option value='All-Star'>All-Star</option>
-          </select>
-        </div>
-        <div id="playoff-div" class="select-area" style="display:none">
-          <p class="p-inline">Playoffs</p><select id="playoffs" onchange="updatedPlayoffs()">
-            <option value='World Series'>World Series</option>
-            <option value='Championship Series'>Championship Series</option>
-            <option value='Division Series'>Division Series</option>
-            <option value='Wild Card Series'>Wild Card Series</option>
-          </select>
-        </div>
-        <div id="buttons">
-          <button id="prev-button" class="button" style="vertical-align:middle" onclick="changeDay(0)"><span>Prev Day</span></button>
-          <button id="next-button" class="button" style="vertical-align:middle" onclick="changeDay(1)"><span>Next Day</span></button>
+      </nav>
+    </div>
+  </section>
+
+<!-- Search Section -->
+  <section>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="container" id="search-section">
+          <div class="row give-me-some-space">
+            <div>
+              Year
+            </div>
+            <div class="flex-fill">
+              <select id="year" onchange="updatedYear()"></select>
+            </div>
+          </div>
+          <div class="row give-me-some-space">
+            <div>Day</div>
+            <div class="flex-fill">
+              <select id="day" onchange="updatedDay()"></select>
+            </div>
+          </div>
+          <div class="row give-me-some-space">
+            <div>
+              Season
+            </div>
+            <div class="flex-fill">
+              <select id="season" onchange="updatedSeason()">
+                <option value='Regular'>Regular</option>
+                <option value='Playoffs'>Playoffs</option>
+                <option value='All-Star'>All-Star</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="row give-me-some-space" id="playoff-div">
+            <div>
+              Playoffs
+            </div>
+            <div class="flex-fill">
+              <select id="playoffs" onchange="updatedPlayoffs()">
+                <option value='World Series'>World Series</option>
+                <option value='Championship Series'>Championship Series</option>
+                <option value='Division Series'>Division Series</option>
+                <option value='Wild Card Series'>Wild Card Series</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="row give-me-some-space">
+            <div id="buttons" class="flex-fill">
+              <button id="prev-button" class="button" style="vertical-align:middle" onclick="changeDay(0)"><span>Prev Day</span></button>
+              <button id="next-button" class="button" style="vertical-align:middle" onclick="changeDay(1)"><span>Next Day</span></button>
+            </div>
+          </div>
+          <div class="row give-me-some-space">
+            <div class="bottom-left-panel">
+              This site works best with <strong>Google Chrome</strong> or <strong>FireFox</strong>.
+            </div>
+          </div>
         </div>
       </div>
-      <div class="box">
+      <div class="box col-md-5">
         <div id="algames">
 
         </div>
       </div>
-      <div class="box">
+      <div class="box col-md-5">
         <div id="nlgames">
 
         </div>
@@ -714,7 +762,7 @@
   </section>
 
   <footer>
-    <p>Copyright &copy; 2019 Top Prospect Baseball. All Rights Reserved.</p>
+    <p>Copyright &copy; 2019 Digi Dugout. All Rights Reserved.</p>
   </footer>
 
   <script>
@@ -811,11 +859,10 @@
       curSeason = document.getElementById("season").value;
       let tempYear = document.getElementById('year');
 
-      if(curSeason === "Playoffs") {
+      if (curSeason === "Playoffs") {
         // show the div with drop-down for playoffs (wild card, division, championship, world series)
-        document.getElementById("playoff-div").style.display = "block";
-      }
-      else {
+        document.getElementById("playoff-div").style.display = "flex";
+      } else {
         document.getElementById("playoff-div").style.display = "none";
       }
 
@@ -838,17 +885,14 @@
       if (curSeason === "All-Star") {
         start = 1933;
 
-      } else if(curSeason === "Playoffs") {
-        if(curPlayoffs === "World Series") {
+      } else if (curSeason === "Playoffs") {
+        if (curPlayoffs === "World Series") {
           start = 1906;
-        }
-        else if(curPlayoffs === "Championship Series") {
+        } else if (curPlayoffs === "Championship Series") {
           start = 1969;
-        }
-        else if(curPlayoffs === "Division Series") {
+        } else if (curPlayoffs === "Division Series") {
           start = 1981;
-        }
-        else if(curPlayoffs = "Wild Card Series") {
+        } else if (curPlayoffs = "Wild Card Series") {
           start = 2012;
         }
       } else {
@@ -1108,6 +1152,9 @@
 
     }
   </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
